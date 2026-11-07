@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROBUXHİLESİ</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ background:#080b10;color:#fff;
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;
+ background:
+ radial-gradient(circle at 15% 20%,#00ff9125,transparent 35%),
+ radial-gradient(circle at 85% 80%,#00aaff20,transparent 35%);
+ pointer-events:none;
+}
+header{
+ height:78px;padding:0 7%;
+ display:flex;align-items:center;
+ justify-content:space-between;
+ border-bottom:1px solid #ffffff15;
+ background:#080e14dd;
+ position:relative;z-index:2;
+}
+.logo{
+ font-size:25px;font-weight:1000;
+ color:#00ff91;letter-spacing:2px;
+ text-shadow:0 0 20px #00ff91;
+}
+.online{font-size:12px;color:#00ff91}
+main{
+ min-height:85vh;display:flex;
+ align-items:center;justify-content:center;
+ padding:25px;position:relative;z-index:1;
+}
+.card{
+ width:100%;max-width:570px;
+ background:#111a22ee;
+ border:1px solid #00ff9144;
+ border-radius:22px;padding:38px;
+ box-shadow:0 0 65px #00ff9115;
+}
+.tag{
+ text-align:center;color:#00ff91;
+ letter-spacing:5px;font-size:11px;
+ margin-bottom:22px;
+}
+h1{text-align:center;font-size:35px;margin-bottom:12px}
+.desc{text-align:center;color:#9ba9b6;line-height:1.7}
+.label{
+ display:block;margin:23px 0 9px;
+ font-size:13px;color:#d5e0e8;
+}
+input{
+ width:100%;padding:17px;
+ background:#080f16;color:white;
+ border:1px solid #344553;
+ border-radius:11px;font-size:16px;
+ outline:none;
+}
+input:focus{border-color:#00ff91}
+.amounts{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:9px;margin-top:12px;
+}
+.amounts button{
+ padding:13px 5px;background:#17232d;
+ color:#dce8ef;border:1px solid #354753;
+ border-radius:9px;font-weight:bold;cursor:pointer;
+}
+.amounts button.selected{
+ background:#003e29;border-color:#00ff91;
+ color:#00ff91;
+}
+.primary{
+ width:100%;margin-top:25px;padding:18px;
+ border:0;border-radius:11px;
+ background:linear-gradient(100deg,#00b96c,#00ff91);
+ color:#001b0e;font-size:16px;
+ font-weight:900;cursor:pointer;
+ transition:.2s;
+}
+.primary:hover{
+ transform:translateY(-2px);
+ box-shadow:0 0 25px #00ff9155;
+}
+.notice{
+ text-align:center;color:#71818e;
+ font-size:11px;line-height:1.6;margin-top:20px;
+}
+#loading,#result{display:none;text-align:center}
+.loader{
+ width:75px;height:75px;margin:30px auto;
+ border:5px solid #263b35;
+ border-top:5px solid #00ff91;
+ border-radius:50%;
+ animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress{
+ height:9px;background:#27362f;
+ border-radius:20px;margin:25px 0;overflow:hidden;
+}
+.bar{
+ height:100%;width:0%;
+ background:linear-gradient(90deg,#00b96c,#00ff91);
+ transition:width .15s;
+}
+#percent{color:#00ff91;font-weight:bold}
+.success{
+ color:#00ff91;font-size:26px;
+ font-weight:1000;margin-bottom:20px;
+}
+.resultInfo{
+ background:#0a1219;border:1px solid #283d48;
+ padding:18px;border-radius:12px;
+ margin:20px 0;text-align:left;line-height:2;
+}
+.resultInfo span{color:#00ff91}
+.resultAmount{
+ color:#00ff91;font-size:36px;
+ font-weight:1000;margin:25px 0;
+ overflow-wrap:anywhere;
+}
+footer{
+ text-align:center;color:#53616b;
+ font-size:11px;padding:20px;
+}
+.confetti{
+ position:fixed;top:-20px;
+ width:9px;height:13px;
+ animation:fall 3s linear forwards;
+ pointer-events:none;z-index:10;
+}
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+@media(max-width:450px){
+ .card{padding:25px 18px}
+ .amounts{grid-template-columns:repeat(2,1fr)}
+ h1{font-size:29px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">ROBUXHİLESİ</div>
+ <div class="online">● SİSTEM AKTİF</div>
+</header>
+
+<main>
+<div class="card">
+
+<section id="login">
+ <div class="tag">PREMIUM REWARDS</div>
+ <h1>ROBUX MERKEZİ</h1>
+ <p class="desc">Kullanıcı adını ve görüntülemek istediğin miktarı belirle.</p>
+
+ <label class="label">ROBLOX KULLANICI ADI</label>
+ <input id="username" maxlength="30" placeholder="Kullanıcı adını yaz...">
+
+ <label class="label">ROBUX MİKTARI</label>
+ <input id="robux" type="number" min="1" max="1000000000" placeholder="Örn: 100000">
+
+ <div class="amounts">
+  <button onclick="choose(100,this)">100</button>
+  <button onclick="choose(500,this)">500</button>
+  <button onclick="choose(1000,this)">1.000</button>
+  <button onclick="choose(10000,this)">10.000</button>
+ </div>
+
+ <section id="loading">
+ <div class="tag">PROCESSING SYSTEM</div>
+ <h1>İŞLEM HAZIRLANIYOR</h1>
+ <div class="loader"></div>
+ <p id="message" class="desc">Sistem başlatılıyor...</p>
+ <div class="progress"><div class="bar" id="bar"></div></div>
+ <div id="percent">0%</div>
+</section>
+
+<section id="result">
+ <div class="success">✓ DEMO TAMAMLANDI</div>
+ <h1>HESABINIZA GELDİ!</h1>
+ <div class="resultInfo">
+  Kullanıcı: <span id="resultName"></span><br>
+  Seçilen miktar: <span id="resultRobux"></span> Robux
+ </div>
+ <div class="resultAmount" id="resultAmount"></div>
+ <p class="desc">Demo gösterimi tamamlandı!</p>
+ <button class="primary" onclick="location.reload()">YENİ İŞLEM ↻</button>
+ <div class="notice">Bu bir simülasyondur. Roblox hesabınızın bakiyesi değişmemiştir.</div>
+</section>
+
+</div>
+</main>
+
+<footer>© 2026 ROBUXHİLESİ</footer>
+
+<script>
+function choose(value,button){
+ document.getElementById("robux").value=value;
+ document.querySelectorAll(".amounts button")
+ .forEach(b=>b.classList.remove("selected"));
+ button.classList.add("selected");
+}
+
+function start(){
+ const name=document.getElementById("username").value.trim();
+ const amount=Number(document.getElementById("robux").value);
+
+ if(!name){
+  alert("Kullanıcı adını yaz!");
+  return;
+ }
+ if(!Number.isSafeInteger(amount)||amount<1||amount>1000000000){
+  alert("Geçerli bir Robux miktarı gir!");
+  return;
+ }
+
+ document.getElementById("login").style.display="none";
+ document.getElementById("loading").style.display="block";
+
+ const messages=[
+ "Sistem başlatılıyor...",
+ "Kullanıcı bilgileri hazırlanıyor...",
+ "Miktar kontrol ediliyor...",
+ "Demo ödül hazırlanıyor...",
+ "Son aşama tamamlanıyor..."
+ ];
+
+ let progress=0;
+ let last=-1;
+
+ const timer=setInterval(()=>{
+  progress++;
+  document.getElementById("bar").style.width=progress+"%";
+  document.getElementById("percent").innerText=progress+"%";
+
+  const index=Math.min(4,Math.floor(progress/20));
+  if(index!==last){
+   last=index;
+   document.getElementById("message").innerText=messages[index];
+  }
+
+  if(progress>=100){
+   clearInterval(timer);
+
+   document.getElementById("loading").style.display="none";
+   document.getElementById("result").style.display="block";
+
+   document.getElementById("resultName").innerText=name;
+   document.getElementById("resultRobux").innerText=amount.toLocaleString("tr-TR");
+   document.getElementById("resultAmount").innerText=
+    amount.toLocaleString("tr-TR")+" R$";
+
+   confetti();
+  }
+ },120);
+}
+
+function confetti(){
+ for(let i=0;i<65;i++){
+  const piece=document.createElement("div");
+  piece.className="confetti";
+  piece.style.left=Math.random()*100+"vw";
+  piece.style.background=
+   ["#00ff91","#00aaff","#a855ff","#ffffff"][Math.floor(Math.random()*4)];
+  piece.style.animationDuration=(2+Math.random()*2)+"s";
+  document.body.appendChild(piece);
+  setTimeout(()=>piece.remove(),4000);
+ }
+}
+</script>
+</body>
+</html>
