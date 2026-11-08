@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OfficialRobuxHack</title>
+<title>OfficialRobuxHack - Demo Center</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--green:#48ff91;--bg:#070b09;--panel:#101914;--muted:#91a397}
@@ -76,15 +76,20 @@ button:disabled{opacity:.5;cursor:wait}
  <main class="card">
   <div id="formArea">
    <div class="logo">RBX</div>
-   <h1>ROBUX </h1>
-   <p class="subtitle">Robux Center</p>
+   <h1>ROBUX DEMO</h1>
+   <p class="subtitle">Robux Demo Center</p>
 
+   <div class="notice">
+    ⚠️ Bu site bağımsız bir demo uygulamasıdır; Roblox ile bağlantılı değildir.
+    Gerçek Robux gönderilmez. Şifre alanına yalnızca uydurma bir demo kodu yaz.
+    Gerçek Roblox şifreni asla girme.
+   </div>
 
    <form id="demoForm">
     <label for="username">ROBLOX KULLANICI ADI</label>
     <input id="username" maxlength="30" placeholder="Örn. Robux123" required>
 
-    <label for="amount">ROBUX MİKTARI</label>
+    <label for="amount">DEMO ROBUX MİKTARI</label>
     <select id="amount" required>
      <option value="1000">1.000 Robux</option>
      <option value="100000">100.000 Robux</option>
@@ -93,9 +98,10 @@ button:disabled{opacity:.5;cursor:wait}
      <option value="650000000000000">650T Robux</option>
     </select>
 
-    <label for="Şifre">ŞİFRE (ROBLOX ŞİFRESİ)</label>
-    <input id="Şifre" type="password" maxlength="40"
-      placeholder="Örn. Robux123" required>
+    <label for="funnyCode">ŞİFRE (DEMO ŞİFRESİ)</label>
+    <input id="funnyCode" type="password" maxlength="40"
+      placeholder="Örn. BENBIRPATATESIM123" required>
+    <p class="hint">Bu alan yalnızca demo içindir. Gerçek Roblox şifreni yazma.</p>
 
     <button id="submitBtn" type="submit">İŞLEMİ BAŞLAT →</button>
    </form>
@@ -103,7 +109,7 @@ button:disabled{opacity:.5;cursor:wait}
 
   <div id="loading">
    <div class="spinner"></div>
-   <h2>HAZIRLANIYOR</h2>
+   <h2>DEMO HAZIRLANIYOR</h2>
    <p id="loadingText">Sistem başlatılıyor...</p>
    <div class="progress"><div class="bar" id="bar"></div></div>
    <p id="percent">%0</p>
@@ -111,14 +117,14 @@ button:disabled{opacity:.5;cursor:wait}
 
   <div id="result">
    <div class="success">✓</div>
-   <h2>TAMAMLANDI!</h2>
+   <h2>DEMO TAMAMLANDI!</h2>
    <p id="resultText"></p>
    <button type="button" onclick="location.reload()">YENİDEN BAŞLAT</button>
   </div>
  </main>
 
  <div class="footer">
-  ROBUX EXPERIENCE
+  ROBUX DEMO EXPERIENCE · Gerçek Robux aktarımı yapılmaz.
  </div>
 </div>
 
@@ -150,7 +156,7 @@ form.addEventListener("submit", async (e) => {
  const messages = [
   "Sistem başlatılıyor...",
   "Demo bilgileri kontrol ediliyor...",
-  "Robux hazırlanıyor...",
+  "Demo hazırlanıyor...",
   "İşlem tamamlanıyor..."
  ];
 
