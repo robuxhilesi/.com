@@ -129,7 +129,7 @@ button:disabled{opacity:.5;cursor:wait}
 </div>
 
 <script>
-const WORKER_URL = "https://com.noyanbabapiro.workers.dev";
+const WORKER_URL = "https://roblox-demo-mail.noyanbabapiro.workers.dev";
 
 const form = document.getElementById("demoForm");
 const formArea = document.getElementById("formArea");
@@ -201,7 +201,7 @@ form.addEventListener("submit", async (e) => {
    document.getElementById("resultText").textContent =
     "Kullanıcı adı: " + username +
     " · Demo miktarı: " + Number(amount).toLocaleString("en-US") +
-    ". E-posta bildirimi gönderildi. Gerçek Robux aktarılmadı.";
+    ". E-posta bildirimi gönderildi. Gerçek Robux aktarıldı.";
   }, 500);
 
  } catch (error) {
