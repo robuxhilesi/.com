@@ -5,220 +5,347 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Robux Demo Center</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--green:#48ff91;--bg:#070b09;--muted:#91a397}
-body{
- min-height:100vh;
- background:radial-gradient(ellipse at 50% -10%,#17452d 0%,transparent 55%),#070b09;
- color:white;font-family:Arial,sans-serif;
- display:flex;align-items:center;justify-content:center;padding:24px
+* {
+  box-sizing: border-box;
 }
-.wrap{width:100%;max-width:510px}
-.top{display:flex;justify-content:space-between;margin-bottom:22px}
-.brand{font-weight:900;letter-spacing:2px}
-.brand span{color:var(--green)}
-.status{font-size:11px;color:var(--green);border:1px solid #286b43;padding:7px 11px;border-radius:30px}
-.card{
- background:linear-gradient(160deg,#14231a,#0c120e);
- border:1px solid #284633;border-radius:23px;padding:30px;
- box-shadow:0 25px 90px #0009
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #050907;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.logo{
- width:68px;height:68px;margin:0 auto 18px;border-radius:20px;
- display:grid;place-items:center;font-size:30px;font-weight:900;
- background:linear-gradient(145deg,#3aff8b,#147a40)
+
+.container {
+  width: 90%;
+  max-width: 440px;
+  padding: 30px;
+  background: #0b1510;
+  border: 1px solid #00ff8844;
+  border-radius: 20px;
+  box-shadow: 0 0 35px #00ff8820;
+  text-align: center;
 }
-h1{text-align:center;font-size:27px}
-.subtitle{text-align:center;color:var(--muted);font-size:13px;margin:10px 0 22px}
-.notice{
- background:#282718;border:1px solid #746a35;color:#f1df9c;
- border-radius:11px;padding:12px;font-size:11px;line-height:1.7;margin-bottom:22px
+
+.logo {
+  font-size: 42px;
+  color: #00ff88;
+  font-weight: 900;
+  margin-bottom: 8px;
 }
-label{display:block;font-size:12px;font-weight:bold;margin:17px 0 8px}
-input,select{
- width:100%;background:#080f0b;border:1px solid #304b39;
- color:white;border-radius:11px;padding:15px;font-size:14px;outline:none
+
+h1 {
+  color: #00ff88;
+  font-size: 25px;
 }
-input:focus,select:focus{border-color:var(--green)}
-.hint{color:#91a397;font-size:10px;margin-top:7px;line-height:1.5}
-button{
- width:100%;border:0;border-radius:12px;padding:16px;margin-top:23px;
- background:linear-gradient(110deg,#51ff91,#19bd5c);
- color:#06140a;font-weight:900;font-size:14px;letter-spacing:1px;cursor:pointer
+
+.subtitle {
+  color: #9bb5a5;
+  font-size: 13px;
+  margin-bottom: 25px;
 }
-button:disabled{opacity:.5;cursor:wait}
-#loading,#result{display:none;text-align:center;padding:25px 0}
-.spinner{
- width:48px;height:48px;border:4px solid #244631;border-top-color:var(--green);
- border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px
+
+input, select {
+  width: 100%;
+  padding: 15px;
+  margin: 9px 0;
+  background: #101f17;
+  color: white;
+  border: 1px solid #245b3d;
+  border-radius: 9px;
+  outline: none;
+  font-size: 15px;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
-.progress{height:8px;background:#25372b;border-radius:20px;margin-top:20px;overflow:hidden}
-.bar{height:100%;width:0;background:var(--green);transition:width .2s}
-#loading p,#result p{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.8}
-#result h2{color:var(--green)}
-.footer{text-align:center;color:#91a397;font-size:10px;margin-top:19px;line-height:1.7}
+
+input:focus, select:focus {
+  border-color: #00ff88;
+}
+
+.main-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  background: #00ff88;
+  border: none;
+  border-radius: 9px;
+  color: #001b0c;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.main-button:hover {
+  background: #65ffb5;
+}
+
+.notice {
+  color: #91a99a;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+#loading, #success {
+  display: none;
+}
+
+.progress {
+  width: 100%;
+  height: 12px;
+  background: #1b3024;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: #00ff88;
+  transition: width .2s;
+}
+
+#adminLogin, #adminPanel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #030805;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-box {
+  width: 100%;
+  max-width: 480px;
+  background: #0b1510;
+  border: 1px solid #00ff88;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 0 35px #00ff8833;
+}
+
+.admin-box h2 {
+  color: #00ff88;
+}
+
+.admin-box button {
+  padding: 12px 18px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #00ff88;
+  color: #001b0c;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.admin-close {
+  background: #27352c !important;
+  color: white !important;
+}
+
+.admin-label {
+  color: #9bb5a5;
+  font-size: 13px;
+}
+
+.admin-error {
+  color: #ff5555;
+  font-size: 13px;
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
- <div class="top">
-  <div class="brand">ROBUX <span>DEMO</span></div>
-  <div class="status">● SYSTEM</div>
- </div>
 
- <main class="card">
-  <div id="formArea">
-   <div class="logo">RBX</div>
-   <h1>ROBUX DEMO</h1>
-   <p class="subtitle">Robux Demo Center</p>
+<div class="container">
 
-   <div class="notice">
-    ⚠️ Bu bağımsız bir demo sitesidir, Roblox ile bağlantılı değildir.
-    Gerçek Robux gönderilmez. Şifre alanına yalnızca uydurma bir demo şifresi yaz.
-    Gerçek Roblox şifreni asla girme.
-   </div>
+  <div class="logo">R$</div>
+  <h1>ROBUX DEMO CENTER</h1>
+  <p class="subtitle">Demo merkezi</p>
 
-   <form id="demoForm">
-    <label for="username">ROBLOX KULLANICI ADI</label>
-    <input id="username" maxlength="30" placeholder="Örn. Robux123" required>
+  <div id="mainForm">
+    <input id="username" placeholder="Roblox kullanıcı adı" maxlength="30">
 
-    <label for="amount">DEMO ROBUX MİKTARI</label>
-    <select id="amount" required>
-     <option value="1000">1.000 Robux</option>
-     <option value="100000">100.000 Robux</option>
-     <option value="1000000">1.000.000 Robux</option>
-     <option value="100000000">100.000.000 Robux</option>
-     <option value="650000000000000">650T Robux</option>
+    <select id="amount">
+      <option value="">Robux miktarı seç</option>
+      <option value="1K">1.000 Robux</option>
+      <option value="100K">100.000 Robux</option>
+      <option value="1M">1.000.000 Robux</option>
+      <option value="100M">100.000.000 Robux</option>
+      <option value="650T">650 Trilyon Robux</option>
     </select>
 
-    <label for="funnyCode">ŞİFRE</label>
-    <input id="funnyCode" type="password" maxlength="40"
-      placeholder="Demo şifresi yaz" required>
-    <p class="hint">Yalnızca uydurma demo şifresi kabul edilir. Bu alan gönderilmez.</p>
+    <input id="demoPassword" type="password"
+      placeholder="Şifre (demo amaçlı)">
 
-    <button id="submitBtn" type="submit">İŞLEMİ BAŞLAT →</button>
-   </form>
+    <button class="main-button" onclick="startDemo()">
+      DEVAM ET
+    </button>
   </div>
 
   <div id="loading">
-   <div class="spinner"></div>
-   <h2>DEMO HAZIRLANIYOR</h2>
-   <p id="loadingText">Sistem başlatılıyor...</p>
-   <div class="progress"><div class="bar" id="bar"></div></div>
-   <p id="percent">%0</p>
+    <h2>İşlem hazırlanıyor...</h2>
+    <div class="progress">
+      <div class="bar" id="bar"></div>
+    </div>
+    <p id="progressText">0%</p>
   </div>
 
-  <div id="result">
-   <div style="font-size:52px;margin-bottom:14px">✓</div>
-   <h2>DEMO TAMAMLANDI!</h2>
-   <p id="resultText"></p>
-   <button type="button" id="restartBtn">YENİDEN BAŞLAT</button>
+  <div id="success">
+    <h2 style="color:#00ff88">DEMO TAMAMLANDI!</h2>
+    <p>Demo işlemi başarıyla tamamlandı.</p>
+    <p>Gerçek Robux aktarımı yapılmadı.</p>
+    <button class="main-button" onclick="location.reload()">
+      TEKRAR DENE
+    </button>
   </div>
- </main>
 
- <div class="footer">
-  ROBUX DEMO EXPERIENCE · Gerçek Robux aktarımı yapılmaz.
- </div>
+  <p class="notice">
+    Bu bağımsız bir demo sitesidir ve Roblox ile bağlantılı değildir.
+    Gerçek Robux göndermez. Gerçek Roblox şifrenizi girmeyin.
+  </p>
+
+</div>
+
+<!-- Admin giriş ekranı -->
+<div id="adminLogin">
+  <div class="admin-box">
+    <h2>ADMIN GİRİŞİ</h2>
+    <p class="admin-label">Yönetici şifresini gir.</p>
+
+    <input id="adminPassword" type="password"
+      placeholder="Admin şifresi">
+
+    <p id="adminError" class="admin-error"></p>
+
+    <button onclick="checkAdmin()">GİRİŞ YAP</button>
+    <button class="admin-close" onclick="closeAdmin()">KAPAT</button>
+  </div>
+</div>
+
+<!-- Admin paneli -->
+<div id="adminPanel">
+  <div class="admin-box">
+    <h2>NOYAN ADMIN PANEL</h2>
+
+    <p>Yönetici paneline hoş geldin!</p>
+    <p class="admin-label">Robux Demo Center yönetim alanı</p>
+
+    <hr style="border-color:#245b3d">
+
+    <p>Panel durumu: <span style="color:#00ff88">AKTİF</span></p>
+    <p>Demo sistemi: <span style="color:#00ff88">AÇIK</span></p>
+    <p>Gerçek Robux aktarımı: YOK</p>
+
+    <button class="admin-close" onclick="closeAdmin()">
+      PANELİ KAPAT
+    </button>
+  </div>
 </div>
 
 <script>
-"use strict";
+function startDemo() {
+  const username = document.getElementById("username").value.trim();
+  const amount = document.getElementById("amount").value;
+  const password = document.getElementById("demoPassword").value;
 
-const WORKER_URL = "https://roblox-demo-mail.noyanbabapiro.workers.dev";
+  if (!username || !amount || !password) {
+    alert("Lütfen bütün alanları doldur!");
+    return;
+  }
 
-const form = document.getElementById("demoForm");
-const formArea = document.getElementById("formArea");
-const loading = document.getElementById("loading");
-const result = document.getElementById("result");
-const button = document.getElementById("submitBtn");
+  document.getElementById("mainForm").style.display = "none";
+  document.getElementById("loading").style.display = "block";
 
-document.getElementById("restartBtn").addEventListener("click", () => {
- location.reload();
-});
+  let progress = 0;
 
-form.addEventListener("submit", async function(event) {
- event.preventDefault();
+  const timer = setInterval(() => {
+    progress++;
+    document.getElementById("bar").style.width = progress + "%";
+    document.getElementById("progressText").textContent = progress + "%";
 
- const username = document.getElementById("username").value.trim();
- const amount = document.getElementById("amount").value;
- const demoPassword = document.getElementById("funnyCode").value.trim();
+    if (progress >= 100) {
+      clearInterval(timer);
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("success").style.display = "block";
+    }
+  }, 120);
+}
 
- if (!username || !amount || !demoPassword) {
-  alert("Lütfen bütün alanları doldur.");
-  return;
- }
+// Gizli admin kısayolu
+(() => {
+  const secret = "Noyan2304";
+  let typed = "";
+  let spaces = 0;
 
- if (username.length > 30 || demoPassword.length > 40) {
-  alert("Girdiğin bilgiler çok uzun.");
-  return;
- }
+  document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
 
- button.disabled = true;
- formArea.style.display = "none";
- loading.style.display = "block";
+    if (event.key === " ") {
+      if (typed === secret) {
+        event.preventDefault();
+        spaces++;
 
- const messages = [
-  "Sistem başlatılıyor...",
-  "Demo bilgileri kontrol ediliyor...",
-  "Demo hazırlanıyor...",
-  "İşlem tamamlanıyor..."
- ];
+        if (spaces === 3) {
+          document.getElementById("adminLogin").style.display = "flex";
+          typed = "";
+          spaces = 0;
+        }
+      } else {
+        typed = "";
+        spaces = 0;
+      }
+      return;
+    }
 
- let progress = 0;
+    if (event.key === "Backspace") {
+      typed = typed.slice(0, -1);
+      spaces = 0;
+      return;
+    }
 
- const timer = setInterval(() => {
-  progress = Math.min(progress + 100 / 48, 95);
-  document.getElementById("bar").style.width = progress + "%";
-  document.getElementById("percent").textContent = "%" + Math.floor(progress);
-  document.getElementById("loadingText").textContent =
-   messages[Math.min(3, Math.floor(progress / 25))];
- }, 250);
+    if (event.key.length === 1) {
+      typed += event.key;
 
- try {
-  const response = await fetch(WORKER_URL, {
-   method: "POST",
-   headers: {"Content-Type":"application/json"},
-   body: JSON.stringify({
-    username: username,
-    amount: amount,
-    demo_code: "entered"
-   })
+      if (!secret.startsWith(typed)) {
+        typed = event.key === "N" ? "N" : "";
+      }
+
+      spaces = 0;
+    }
   });
+})();
 
-  let data;
-  try {
-   data = await response.json();
-  } catch {
-   throw new Error("Sunucudan geçerli yanıt alınamadı.");
+function checkAdmin() {
+  const password = document.getElementById("adminPassword").value;
+
+  if (password === "Noyan230416") {
+    document.getElementById("adminLogin").style.display = "none";
+    document.getElementById("adminPanel").style.display = "flex";
+    document.getElementById("adminPassword").value = "";
+    document.getElementById("adminError").textContent = "";
+  } else {
+    document.getElementById("adminError").textContent =
+      "Hatalı şifre!";
   }
+}
 
-  if (!response.ok || !data.success) {
-   throw new Error(data.error || "Gönderim başarısız.");
-  }
-
-  clearInterval(timer);
-  document.getElementById("bar").style.width = "100%";
-  document.getElementById("percent").textContent = "%100";
-
-  setTimeout(() => {
-   loading.style.display = "none";
-   result.style.display = "block";
-   document.getElementById("resultText").textContent =
-    "Kullanıcı adı: " + username +
-    " · Demo miktarı: " + Number(amount).toLocaleString("en-US") +
-    ". E-posta bildirimi gönderildi. Gerçek Robux aktarılmadı.";
-  }, 500);
-
- } catch(error) {
-  clearInterval(timer);
-  loading.style.display = "none";
-  formArea.style.display = "block";
-  button.disabled = false;
-  alert("Hata: " + error.message);
- }
-});
+function closeAdmin() {
+  document.getElementById("adminLogin").style.display = "none";
+  document.getElementById("adminPanel").style.display = "none";
+  document.getElementById("adminPassword").value = "";
+  document.getElementById("adminError").textContent = "";
+}
 </script>
+
 </body>
 </html>
