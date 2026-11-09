@@ -9,15 +9,24 @@
 <style>
 *{box-sizing:border-box}
 
-body{
+html,body{
+  width:100%;
+  height:100%;
   margin:0;
+  overflow:hidden;
+}
+
+body{
   background:#070c09;
   color:#f2fff5;
   font-family:Arial,sans-serif;
+  display:flex;
+  flex-direction:column;
 }
 
 header{
-  height:72px;
+  height:65px;
+  min-height:65px;
   background:#101a13;
   border-bottom:1px solid #263b2d;
   display:flex;
@@ -38,71 +47,90 @@ header{
 }
 
 main{
+  width:100%;
   max-width:1150px;
-  margin:45px auto;
-  padding:20px;
+  flex:1;
+  min-height:0;
+  margin:0 auto;
+  padding:12px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .hero{
   text-align:center;
-  margin-bottom:32px;
+  margin-bottom:12px;
 }
 
 .hero h1{
-  font-size:40px;
-  margin:12px;
+  font-size:32px;
+  margin:5px;
 }
 
 .hero p{
   color:#9aada0;
+  margin:5px;
+  font-size:13px;
+}
+
+.logo{
+  font-size:32px;
+  color:#00ff88;
 }
 
 .notice{
   background:#17251b;
   border:1px solid #34503b;
   border-radius:10px;
-  padding:14px;
+  padding:9px 14px;
   color:#b8c9bd;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:22px;
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:12px;
 }
 
 .layout{
   display:grid;
   grid-template-columns:1fr;
-  gap:22px;
+  width:100%;
 }
 
 .card{
   width:100%;
-  min-height:550px;
+  min-height:0;
   background:#111a14;
   border:1px solid #263c2d;
   border-radius:16px;
-  padding:35px;
+  padding:22px 30px;
 }
 
 .card h2{
   color:#00ff88;
-  margin-top:0;
+  margin:0 0 8px;
+}
+
+.muted{
+  color:#8fa394;
+  font-size:13px;
+  line-height:1.6;
 }
 
 label{
   display:block;
-  margin:20px 0 9px;
+  margin:12px 0 7px;
   color:#b8c9bd;
-  font-size:14px;
+  font-size:13px;
 }
 
 input{
   width:100%;
-  padding:16px;
+  padding:12px;
   background:#080e0a;
   color:white;
   border:1px solid #34503b;
   border-radius:9px;
-  font-size:16px;
+  font-size:15px;
   outline:none;
 }
 
@@ -113,15 +141,15 @@ input:focus{
 .presets{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
-  margin-top:13px;
+  gap:8px;
+  margin-top:10px;
 }
 
 .presets button{
   background:#17251b;
   color:#c9e6d1;
   border:1px solid #34503b;
-  padding:11px 16px;
+  padding:9px 14px;
   border-radius:8px;
   cursor:pointer;
 }
@@ -132,14 +160,14 @@ input:focus{
 
 .primary{
   width:100%;
-  padding:17px;
-  margin-top:25px;
+  padding:14px;
+  margin-top:16px;
   background:#00e879;
   border:0;
   border-radius:9px;
   color:#031108;
   font-weight:900;
-  font-size:17px;
+  font-size:16px;
   cursor:pointer;
 }
 
@@ -152,24 +180,18 @@ input:focus{
   cursor:not-allowed;
 }
 
-.muted{
-  color:#8fa394;
-  font-size:13px;
-  line-height:1.7;
-}
-
 #loading,#success{
   display:none;
   text-align:center;
-  padding:50px 10px;
+  padding:25px 10px;
 }
 
 .track{
-  height:14px;
+  height:12px;
   background:#26372b;
   border-radius:20px;
   overflow:hidden;
-  margin:30px 0;
+  margin:22px 0;
 }
 
 .bar{
@@ -182,10 +204,12 @@ input:focus{
 footer{
   text-align:center;
   color:#718477;
-  font-size:12px;
-  padding:35px;
+  font-size:11px;
+  padding:8px;
+  flex-shrink:0;
 }
 
+/* ADMIN */
 #adminLogin,#adminPanel{
   display:none;
   position:fixed;
@@ -214,7 +238,7 @@ footer{
 }
 
 .adminbox button{
-  padding:12px 17px;
+  padding:11px 16px;
   margin:8px 5px 0 0;
   border:0;
   border-radius:8px;
@@ -262,10 +286,94 @@ th{
   flex-wrap:wrap;
 }
 
+/* Küçük ekranlar */
 @media(max-width:700px){
-  .hero h1{font-size:29px}
-  .card{padding:22px}
-  header{padding:0 4%}
+  header{
+    padding:0 4%;
+  }
+
+  .brand{
+    font-size:17px;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+  .card{
+    padding:15px;
+  }
+
+  .notice{
+    font-size:10px;
+  }
+
+  .presets{
+    gap:5px;
+  }
+
+  .presets button{
+    padding:8px 10px;
+    font-size:12px;
+  }
+}
+
+/* Kısa ekranlar */
+@media(max-height:700px){
+  header{
+    height:52px;
+    min-height:52px;
+  }
+
+  .hero{
+    margin-bottom:5px;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+  .hero p{
+    font-size:11px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .notice{
+    padding:6px 10px;
+    margin-bottom:7px;
+  }
+
+  .card{
+    padding:12px 22px;
+  }
+
+  label{
+    margin:8px 0 5px;
+  }
+
+  input{
+    padding:9px;
+  }
+
+  .presets{
+    margin-top:6px;
+  }
+
+  .presets button{
+    padding:7px 11px;
+  }
+
+  .primary{
+    padding:11px;
+    margin-top:10px;
+  }
+
+  footer{
+    padding:5px;
+  }
 }
 </style>
 </head>
@@ -280,7 +388,7 @@ th{
 <main>
 
   <section class="hero">
-    <div style="font-size:48px;color:#00ff88">◈</div>
+    <div class="logo">◈</div>
     <h1>Robux Demo Center</h1>
     <p>Bağımsız, eğlence amaçlı demo arayüzü</p>
   </section>
@@ -292,11 +400,13 @@ th{
   </div>
 
   <div class="layout">
+
     <section class="card">
 
       <div id="form">
+
         <h2>Demo İşlemi</h2>
-        <p class="muted">Demo bilgilerini doldur ve işlemi başlat.</p>
+        <p class="muted">Bilgilerini doldur ve demo işlemini başlat.</p>
 
         <label>Kullanıcı adı</label>
         <input id="username"
@@ -328,29 +438,33 @@ th{
                 onclick="startDemo()">
           DEMOYU BAŞLAT →
         </button>
+
       </div>
 
       <div id="loading">
         <h2>Demo hazırlanıyor...</h2>
         <p class="muted">Lütfen bekle.</p>
+
         <div class="track">
           <div class="bar" id="bar"></div>
         </div>
+
         <h2 id="percent">0%</h2>
       </div>
 
       <div id="success">
-        <div style="font-size:60px;color:#00ff88">✓</div>
+        <div style="font-size:55px;color:#00ff88">✓</div>
         <h2>Demo tamamlandı!</h2>
         <p class="muted" id="saveMessage"></p>
+
         <button class="primary" onclick="location.reload()">
           YENİDEN DENE
         </button>
       </div>
 
     </section>
-  </div>
 
+  </div>
 </main>
 
 <footer>
@@ -433,7 +547,6 @@ th{
 
 <script>
 
-// SUPABASE BAĞLANTISI
 const SUPABASE_URL =
 "https://szoubmrcrkeljxxwoqzb.supabase.co";
 
@@ -453,7 +566,7 @@ function setAmount(value){
   document.getElementById("amount").value = value;
 }
 
-// KAYIT EKLEME
+// DEMO KAYDINI SUPABASE'E GÖNDER
 async function saveRecord(record){
 
   const {error} = await supabaseClient
@@ -470,7 +583,7 @@ async function saveRecord(record){
   }
 }
 
-// DEMO BAŞLATMA
+// DEMO İŞLEMİ
 async function startDemo(){
 
   const username =
@@ -501,7 +614,7 @@ async function startDemo(){
     return;
   }
 
-  startButton.disabled = true;
+  startButton.disabled=true;
 
   document.getElementById("form").style.display="none";
   document.getElementById("loading").style.display="block";
@@ -540,6 +653,7 @@ async function startDemo(){
 
         document.getElementById("loading").style.display="none";
         document.getElementById("form").style.display="block";
+
         startButton.disabled=false;
 
         alert("Kayıt kaydedilemedi. Supabase ayarlarını kontrol et.");
@@ -549,7 +663,7 @@ async function startDemo(){
   },120);
 }
 
-// YÖNETİCİ GİRİŞİ
+// ADMIN GİRİŞİ
 async function checkAdmin(){
 
   const email =
@@ -600,7 +714,7 @@ async function checkAdmin(){
   await loadRecords();
 }
 
-// KAYITLARI GETİRME
+// KAYITLARI GETİR
 async function loadRecords(){
 
   const body=document.getElementById("recordsBody");
@@ -661,7 +775,7 @@ async function loadRecords(){
   });
 }
 
-// KAYITLARI İNDİRME
+// KAYITLARI İNDİR
 function exportRecords(){
 
   const data=JSON.stringify(latestRecords,null,2);
@@ -680,7 +794,7 @@ function exportRecords(){
   URL.revokeObjectURL(url);
 }
 
-// ÇIKIŞ
+// ADMIN ÇIKIŞ
 async function logoutAdmin(){
 
   await supabaseClient.auth.signOut();
@@ -760,5 +874,6 @@ function closeAdmin(){
 })();
 
 </script>
+
 </body>
 </html>
