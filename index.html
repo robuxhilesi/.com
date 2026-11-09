@@ -3,345 +3,230 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OfficialRobuxHack</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robux Demo Center</title>
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #050907;
-  color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  width: 90%;
-  max-width: 440px;
-  padding: 30px;
-  background: #0b1510;
-  border: 1px solid #00ff8844;
-  border-radius: 20px;
-  box-shadow: 0 0 35px #00ff8820;
-  text-align: center;
-}
-
-.logo {
-  font-size: 42px;
-  color: #00ff88;
-  font-weight: 900;
-  margin-bottom: 8px;
-}
-
-h1 {
-  color: #00ff88;
-  font-size: 25px;
-}
-
-.subtitle {
-  color: #9bb5a5;
-  font-size: 13px;
-  margin-bottom: 25px;
-}
-
-input, select {
-  width: 100%;
-  padding: 15px;
-  margin: 9px 0;
-  background: #101f17;
-  color: white;
-  border: 1px solid #245b3d;
-  border-radius: 9px;
-  outline: none;
-  font-size: 15px;
-}
-
-input:focus, select:focus {
-  border-color: #00ff88;
-}
-
-.main-button {
-  width: 100%;
-  padding: 15px;
-  margin-top: 15px;
-  background: #00ff88;
-  border: none;
-  border-radius: 9px;
-  color: #001b0c;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.main-button:hover {
-  background: #65ffb5;
-}
-
-.notice {
-  color: #91a99a;
-  font-size: 11px;
-  line-height: 1.6;
-  margin-top: 20px;
-}
-
-#loading, #success {
-  display: none;
-}
-
-.progress {
-  width: 100%;
-  height: 12px;
-  background: #1b3024;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 20px 0;
-}
-
-.bar {
-  height: 100%;
-  width: 0%;
-  background: #00ff88;
-  transition: width .2s;
-}
-
-#adminLogin, #adminPanel {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: #030805;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.admin-box {
-  width: 100%;
-  max-width: 480px;
-  background: #0b1510;
-  border: 1px solid #00ff88;
-  border-radius: 16px;
-  padding: 25px;
-  box-shadow: 0 0 35px #00ff8833;
-}
-
-.admin-box h2 {
-  color: #00ff88;
-}
-
-.admin-box button {
-  padding: 12px 18px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #00ff88;
-  color: #001b0c;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.admin-close {
-  background: #27352c !important;
-  color: white !important;
-}
-
-.admin-label {
-  color: #9bb5a5;
-  font-size: 13px;
-}
-
-.admin-error {
-  color: #ff5555;
-  font-size: 13px;
-}
+*{box-sizing:border-box}
+body{margin:0;background:#080d0a;color:#fff;font-family:Arial,sans-serif}
+header{height:70px;background:#101812;border-bottom:1px solid #263b2d;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0}
+.brand{font-size:23px;font-weight:900;color:#00ff88}
+.status{font-size:12px;color:#00ff88}
+main{max-width:1050px;margin:55px auto;padding:20px}
+.hero{text-align:center;margin-bottom:35px}
+.hero h1{font-size:38px;margin:10px}
+.hero p{color:#9aada0}
+.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+.card{background:#111a14;border:1px solid #263c2d;border-radius:16px;padding:25px}
+.card h2{margin-top:0;color:#00ff88}
+label{display:block;margin:17px 0 8px;color:#b8c9bd;font-size:13px}
+input{width:100%;padding:15px;background:#080e0a;color:white;border:1px solid #34503b;border-radius:9px;font-size:16px;outline:none}
+input:focus{border-color:#00ff88}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.presets button{background:#17251b;color:#c9e6d1;border:1px solid #34503b;padding:9px 12px;border-radius:8px;cursor:pointer}
+.presets button:hover{border-color:#00ff88;color:#00ff88}
+.primary{width:100%;padding:16px;margin-top:22px;background:#00e879;border:0;border-radius:9px;color:#031108;font-weight:900;font-size:16px;cursor:pointer}
+.primary:hover{background:#70ffb5}
+.stat{background:#0a120c;border:1px solid #263c2d;border-radius:10px;padding:16px;margin:12px 0}
+.stat strong{display:block;color:#00ff88;font-size:23px;margin-top:7px}
+.muted{color:#8fa394;font-size:13px;line-height:1.6}
+#loading,#success{display:none;text-align:center}
+.track{height:12px;background:#26372b;border-radius:20px;overflow:hidden;margin:25px 0}
+.bar{height:100%;width:0;background:#00ff88;transition:width .15s}
+footer{text-align:center;color:#718477;font-size:12px;padding:30px}
+#adminLogin,#adminPanel{display:none;position:fixed;inset:0;background:#030805f5;z-index:1000;align-items:center;justify-content:center;padding:20px}
+.adminbox{width:100%;max-width:440px;background:#111a14;border:1px solid #00ff88;border-radius:15px;padding:25px}
+.adminbox h2{color:#00ff88}
+.adminbox button{padding:12px 18px;margin-top:12px;border:0;border-radius:8px;background:#00ff88;font-weight:bold;cursor:pointer}
+.close{background:#29352c!important;color:white}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.hero h1{font-size:29px}}
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<header>
+  <div class="brand">R$ DEMO CENTER</div>
+  <div class="status">● DEMO SİSTEMİ AKTİF</div>
+</header>
 
-  <div class="logo">R$</div>
-  <h1>ROBUX MERKEZİ</h1>
-  <p class="subtitle">Official</p>
+<main>
+  <section class="hero">
+    <div style="font-size:45px">◈</div>
+    <h1>Robux Demo Center</h1>
+    <p>Robux işlem arayüzü · Görsel demo</p>
+  </section>
 
-  <div id="mainForm">
-    <input id="username" placeholder="Roblox kullanıcı adı" maxlength="30">
+  <div class="layout">
+    <section class="card">
+      <div id="form">
+        <h2>Demo İşlemi</h2>
+        <p class="muted">Bilgilerini girerek demo işlemini başlat.</p>
 
-    <select id="amount">
-      <option value="">Robux miktarı seç</option>
-      <option value="1K">1.000 Robux</option>
-      <option value="100K">100.000 Robux</option>
-      <option value="1M">1.000.000 Robux</option>
-      <option value="100M">100.000.000 Robux</option>
-      <option value="650T">5000 rilyon Robux</option>
-    </select>
+        <label>Roblox kullanıcı adı</label>
+        <input id="username" placeholder="Kullanıcı adın" maxlength="30">
 
-    <input id="demoPassword" type="password"
-      placeholder="Şifre">
+        <label>Robux miktarı</label>
+        <input id="amount" type="number" min="1" max="999999999999999"
+          placeholder="Robux miktarını buraya yaz">
 
-    <button class="main-button" onclick="startDemo()">
-      DEVAM ET
-    </button>
+        <div class="presets">
+          <button onclick="setAmount(1000)">1K</button>
+          <button onclick="setAmount(100000)">100K</button>
+          <button onclick="setAmount(1000000)">1M</button>
+          <button onclick="setAmount(100000000)">100M</button>
+          <button onclick="setAmount(650000000000000)">650T</button>
+        </div>
+
+        <label>Demo şifresi</label>
+        <input id="demoPassword" type="password" placeholder="Demo şifresi">
+
+        <button class="primary" onclick="startDemo()">DEMO İŞLEMİNİ BAŞLAT →</button>
+      </div>
+
+      <div id="loading">
+        <h2>İşlem hazırlanıyor</h2>
+        <p class="muted">Demo işlemi gerçekleştiriliyor...</p>
+        <div class="track"><div class="bar" id="bar"></div></div>
+        <h2 id="percent">0%</h2>
+      </div>
+
+      <div id="success">
+        <div style="font-size:55px;color:#00ff88">✓</div>
+        <h2>Demo tamamlandı!</h2>
+        <p class="muted">Robuxların başarıyla tamamlandı. </p>
+        <button class="primary" onclick="location.reload()">YENİDEN DENE</button>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2>İşlem Bilgileri</h2>
+      <div class="stat">
+        <span class="muted">Sistem durumu</span>
+        <strong>AKTİF</strong>
+      </div>
+      <div class="stat">
+        <span class="muted">İşlem türü</span>
+        <strong>DEMO</strong>
+      </div>
+      <div class="stat">
+        <span class="muted">İşlem süresi</span>
+        <strong>12 SANİYE</strong>
+      </div>
+    </aside>
   </div>
+</main>
 
-  <div id="loading">
-    <h2>İşlem hazırlanıyor...</h2>
-    <div class="progress">
-      <div class="bar" id="bar"></div>
-    </div>
-    <p id="progressText">0%</p>
-  </div>
+<footer>ROBUX DEMO CENTER · BAĞIMSIZ DEMO PROJESİ</footer>
 
-  <div id="success">
-    <h2 style="color:#00ff88">Robuxun Hazır!</h2>
-    <p>İşlem başarıyla tamamlandı.</p>
-    <p>Robux 2-3 gün içinde gelir.</p>
-    <button class="main-button" onclick="location.reload()">
-      TEKRAR DENE
-    </button>
-  </div>
-
-
-</div>
-
-<!-- Admin giriş ekranı -->
 <div id="adminLogin">
-  <div class="admin-box">
-    <h2>ADMIN GİRİŞİ</h2>
-    <p class="admin-label">Yönetici şifresini gir.</p>
-
-    <input id="adminPassword" type="password"
-      placeholder="Admin şifresi">
-
-    <p id="adminError" class="admin-error"></p>
-
+  <div class="adminbox">
+    <h2>NOYAN ADMIN GİRİŞİ</h2>
+    <p class="muted">Yönetici şifresini gir.</p>
+    <input id="adminPassword" type="password" placeholder="Admin şifresi">
+    <p id="adminError" style="color:#ff5555"></p>
     <button onclick="checkAdmin()">GİRİŞ YAP</button>
-    <button class="admin-close" onclick="closeAdmin()">KAPAT</button>
+    <button class="close" onclick="closeAdmin()">KAPAT</button>
   </div>
 </div>
 
-<!-- Admin paneli -->
 <div id="adminPanel">
-  <div class="admin-box">
+  <div class="adminbox">
     <h2>NOYAN ADMIN PANEL</h2>
-
     <p>Yönetici paneline hoş geldin!</p>
-    <p class="admin-label">Robux Demo Center yönetim alanı</p>
-
-    <hr style="border-color:#245b3d">
-
-    <p>Panel durumu: <span style="color:#00ff88">AKTİF</span></p>
-    <p>Demo sistemi: <span style="color:#00ff88">AÇIK</span></p>
-    <p>Gerçek Robux aktarımı: YOK</p>
-
-    <button class="admin-close" onclick="closeAdmin()">
-      PANELİ KAPAT
-    </button>
+    <div class="stat"><span class="muted">Panel durumu</span><strong>AKTİF</strong></div>
+    <div class="stat"><span class="muted">Demo sistemi</span><strong>AÇIK</strong></div>
+    <p class="muted">Bu sürümde yönetim paneli görsel demodur.</p>
+    <button class="close" onclick="closeAdmin()">PANELİ KAPAT</button>
   </div>
 </div>
 
 <script>
-function startDemo() {
-  const username = document.getElementById("username").value.trim();
-  const amount = document.getElementById("amount").value;
-  const password = document.getElementById("demoPassword").value;
+function setAmount(value){
+  document.getElementById("amount").value=value;
+}
 
-  if (!username || !amount || !password) {
-    alert("Lütfen bütün alanları doldur!");
+function startDemo(){
+  const username=document.getElementById("username").value.trim();
+  const amount=document.getElementById("amount").value;
+  const password=document.getElementById("demoPassword").value;
+
+  if(!username || !amount || !password || Number(amount)<=0){
+    alert("Lütfen kullanıcı adı, geçerli Robux miktarı ve demo şifresini gir!");
     return;
   }
 
-  document.getElementById("mainForm").style.display = "none";
-  document.getElementById("loading").style.display = "block";
+  document.getElementById("form").style.display="none";
+  document.getElementById("loading").style.display="block";
 
-  let progress = 0;
-
-  const timer = setInterval(() => {
+  let progress=0;
+  const timer=setInterval(()=>{
     progress++;
-    document.getElementById("bar").style.width = progress + "%";
-    document.getElementById("progressText").textContent = progress + "%";
+    document.getElementById("bar").style.width=progress+"%";
+    document.getElementById("percent").textContent=progress+"%";
 
-    if (progress >= 100) {
+    if(progress>=100){
       clearInterval(timer);
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("success").style.display = "block";
+      document.getElementById("loading").style.display="none";
+      document.getElementById("success").style.display="block";
     }
-  }, 120);
+  },120);
 }
 
-// Gizli admin kısayolu
 (() => {
-  const secret = "Noyan2304";
-  let typed = "";
-  let spaces = 0;
+  const secret="Noyan2304";
+  let typed="";
+  let spaces=0;
 
-  document.addEventListener("keydown", (event) => {
-    if (event.ctrlKey || event.altKey || event.metaKey) return;
+  document.addEventListener("keydown",event=>{
+    if(event.ctrlKey || event.altKey || event.metaKey)return;
 
-    if (event.key === " ") {
-      if (typed === secret) {
+    if(event.key===" "){
+      if(typed===secret){
         event.preventDefault();
         spaces++;
-
-        if (spaces === 3) {
-          document.getElementById("adminLogin").style.display = "flex";
-          typed = "";
-          spaces = 0;
+        if(spaces===3){
+          document.getElementById("adminLogin").style.display="flex";
+          typed="";
+          spaces=0;
         }
-      } else {
-        typed = "";
-        spaces = 0;
+      }else{
+        typed="";
+        spaces=0;
       }
       return;
     }
 
-    if (event.key === "Backspace") {
-      typed = typed.slice(0, -1);
-      spaces = 0;
+    if(event.key==="Backspace"){
+      typed=typed.slice(0,-1);
+      spaces=0;
       return;
     }
 
-    if (event.key.length === 1) {
-      typed += event.key;
-
-      if (!secret.startsWith(typed)) {
-        typed = event.key === "N" ? "N" : "";
+    if(event.key.length===1){
+      typed+=event.key;
+      if(!secret.startsWith(typed)){
+        typed=event.key==="N"?"N":"";
       }
-
-      spaces = 0;
+      spaces=0;
     }
   });
 })();
 
-function checkAdmin() {
-  const password = document.getElementById("adminPassword").value;
-
-  if (password === "Noyan230416") {
-    document.getElementById("adminLogin").style.display = "none";
-    document.getElementById("adminPanel").style.display = "flex";
-    document.getElementById("adminPassword").value = "";
-    document.getElementById("adminError").textContent = "";
-  } else {
-    document.getElementById("adminError").textContent =
-      "Hatalı şifre!";
+function checkAdmin(){
+  if(document.getElementById("adminPassword").value==="Noyan230416"){
+    document.getElementById("adminLogin").style.display="none";
+    document.getElementById("adminPanel").style.display="flex";
+    document.getElementById("adminPassword").value="";
+  }else{
+    document.getElementById("adminError").textContent="Şifre yanlış!";
   }
 }
 
-function closeAdmin() {
-  document.getElementById("adminLogin").style.display = "none";
-  document.getElementById("adminPanel").style.display = "none";
-  document.getElementById("adminPassword").value = "";
-  document.getElementById("adminError").textContent = "";
+function closeAdmin(){
+  document.getElementById("adminLogin").style.display="none";
+  document.getElementById("adminPanel").style.display="none";
+  document.getElementById("adminPassword").value="Noyan230416.";
+  document.getElementById("adminError").textContent="";
 }
 </script>
-
 </body>
 </html>
