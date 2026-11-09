@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OfficialRobuxHack</title>
+<title>Robux Demo Center</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#070c09;color:#f2fff5;font-family:Arial,sans-serif}
@@ -28,6 +29,7 @@ input:focus{border-color:#00ff88}
 .stat{background:#0a120c;border:1px solid #263c2d;border-radius:10px;padding:16px;margin:12px 0}
 .stat strong{display:block;color:#00ff88;font-size:22px;margin-top:7px}
 .muted{color:#8fa394;font-size:13px;line-height:1.6}
+.notice{background:#17251b;border:1px solid #34503b;border-radius:10px;padding:13px;color:#b8c9bd;font-size:12px;line-height:1.6;margin:15px 0}
 #loading,#success{display:none;text-align:center}
 .track{height:12px;background:#26372b;border-radius:20px;overflow:hidden;margin:25px 0}
 .bar{height:100%;width:0;background:#00ff88;transition:width .15s}
@@ -46,28 +48,37 @@ th{color:#00ff88}
 @media(max-width:700px){.layout{grid-template-columns:1fr}.hero h1{font-size:29px}}
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="brand">R$ Robux Center</div>
-  <div class="status">● Robux Sistemi Aktif</div>
+  <div class="brand">R$ Robux Demo Center</div>
+  <div class="status">● DEMO SİSTEMİ</div>
 </header>
 
 <main>
   <section class="hero">
     <div style="font-size:45px;color:#00ff88">◈</div>
-    <h1>Robux Center</h1>
-    <p>Profesyonel görünümlü bağımsız demo arayüzü</p>
+    <h1>Robux Demo Center</h1>
+    <p>Bağımsız, eğlence amaçlı demo arayüzü</p>
   </section>
+
+  <div class="notice">
+    ⚠️ Bu site Roblox ile bağlantılı değildir. Gerçek Robux göndermez,
+    Roblox hesabına erişmez ve Roblox şifresi istemez. Girilen bilgiler
+    yalnızca bu demo deneyiminin kayıtlarıdır.
+  </div>
 
   <div class="layout">
     <section class="card">
+
       <div id="form">
-        <p class="muted">Hesap bilgilerini doldur.</p>
+        <p class="muted">Demo bilgilerini doldur.</p>
 
         <label>Kullanıcı adı</label>
-        <input id="username" placeholder="Kullanıcı adın" maxlength="30">
+        <input id="username" placeholder="Demo kullanıcı adın" maxlength="30">
 
-        <label>Robux miktarı</label>
+        <label>Robux miktarı (demo)</label>
         <input id="amount" type="number" min="1" max="999999999999999" placeholder="İstediğin miktarı yaz">
 
         <div class="presets">
@@ -81,12 +92,12 @@ th{color:#00ff88}
         <label>Komik Kod 😂</label>
         <input id="funnyCode" placeholder="Örn: BENBIRROBOTUM" maxlength="40">
 
-        <button class="primary" onclick="startDemo()">İŞLEMİ BAŞLAT →</button>
+        <button class="primary" id="startButton" onclick="startDemo()">DEMOYU BAŞLAT →</button>
       </div>
 
       <div id="loading">
-        <h2>İşlem hazırlanıyor...</h2>
-        <p class="muted">İşlemi gerçekleştiriliyor.</p>
+        <h2>Demo hazırlanıyor...</h2>
+        <p class="muted">Lütfen bekle.</p>
         <div class="track"><div class="bar" id="bar"></div></div>
         <h2 id="percent">0%</h2>
       </div>
@@ -94,42 +105,53 @@ th{color:#00ff88}
       <div id="success">
         <div style="font-size:55px;color:#00ff88">✓</div>
         <h2>Demo tamamlandı!</h2>
-        <p class="muted">İşlem kaydın bu tarayıcıya kaydedildi.</p>
+        <p class="muted" id="saveMessage">Demo kaydın başarıyla oluşturuldu.</p>
         <button class="primary" onclick="location.reload()">YENİDEN DENE</button>
       </div>
+
     </section>
 
     <aside class="card">
-      <h2>İşlem Bilgileri</h2>
+      <h2>Demo Bilgileri</h2>
       <div class="stat"><span class="muted">Sistem durumu</span><strong>AKTİF</strong></div>
       <div class="stat"><span class="muted">İşlem türü</span><strong>DEMO</strong></div>
       <div class="stat"><span class="muted">İşlem süresi</span><strong>12 SANİYE</strong></div>
+      <p class="muted">Bu işlem gerçek Robux transferi gerçekleştirmez.</p>
     </aside>
   </div>
 </main>
 
-<footer>ROBUX CENTER ·</footer>
+<footer>ROBUX DEMO CENTER · ROBLOX İLE BAĞLANTILI DEĞİLDİR</footer>
 
+<!-- Yönetici girişi -->
 <div id="adminLogin">
   <div class="adminbox" style="max-width:420px">
     <h2>NOYAN ADMIN GİRİŞİ</h2>
-    <p class="muted">Yönetici şifresini gir.</p>
-    <input id="adminPassword" type="password" placeholder="Admin şifresi">
+    <p class="muted">Supabase yönetici hesabınla giriş yap.</p>
+
+    <label>E-posta</label>
+    <input id="adminEmail" type="email" placeholder="Yönetici e-postası">
+
+    <label>Yönetici parolası</label>
+    <input id="adminPassword" type="password" placeholder="Supabase parolan">
+
     <p id="adminError" style="color:#ff5555"></p>
-    <button onclick="checkAdmin()">GİRİŞ YAP</button>
+
+    <button id="loginButton" onclick="checkAdmin()">GİRİŞ YAP</button>
     <button class="close" onclick="closeAdmin()">KAPAT</button>
   </div>
 </div>
 
+<!-- Yönetici paneli -->
 <div id="adminPanel">
   <div class="adminbox">
     <h2>NOYAN ADMIN PANEL</h2>
-    <p class="muted">İşlem kayıtları</p>
+    <p class="muted">Supabase'e kaydedilmiş demo kayıtları</p>
 
     <div class="admin-actions">
       <button onclick="loadRecords()">YENİLE</button>
       <button onclick="exportRecords()">KAYITLARI İNDİR</button>
-      <button class="close" onclick="closeAdmin()">PANELİ KAPAT</button>
+      <button class="close" onclick="logoutAdmin()">ÇIKIŞ YAP</button>
     </div>
 
     <div class="stat">
@@ -137,13 +159,15 @@ th{color:#00ff88}
       <strong id="recordCount">0</strong>
     </div>
 
+    <p id="recordsError" class="muted"></p>
+
     <div class="tablewrap">
       <table>
         <thead>
           <tr>
             <th>Kullanıcı adı</th>
             <th>Robux miktarı</th>
-            <th>Şifre</th>
+            <th>Komik Kod</th>
             <th>Tarih</th>
           </tr>
         </thead>
@@ -152,41 +176,55 @@ th{color:#00ff88}
         </tbody>
       </table>
     </div>
-    
   </div>
 </div>
 
+<!-- Supabase kütüphanesi -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-const ADMIN_PASSWORD = "Noyan230416";
+// Supabase bağlantı bilgileri
+const SUPABASE_URL = "https://szoubmrcrkeljxxwoqzb.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_DQ4yG3XQvkfv7JCw8vZcwA_l_r9oRoi";
+
 const SHORTCUT = "Noyan2304";
-const STORAGE_KEY = "noyan_demo_records_v1";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+let latestRecords = [];
 
 function setAmount(value) {
   document.getElementById("amount").value = value;
 }
 
-function getRecords() {
-  try {
-    const records = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    return Array.isArray(records) ? records : [];
-  } catch {
-    return [];
+// Ziyaretçinin demo kaydını Supabase'e gönder
+async function saveRecord(record) {
+  const { error } = await supabaseClient
+    .from("demo_records")
+    .insert({
+      username: record.username,
+      amount: record.amount,
+      funny_code: record.funnyCode
+    });
+
+  if (error) {
+    console.error("Supabase kayıt hatası:", error);
+    throw error;
   }
 }
 
-function saveRecord(record) {
-  const records = getRecords();
-  records.push(record);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-}
-
-function startDemo() {
+async function startDemo() {
   const username = document.getElementById("username").value.trim();
   const amount = document.getElementById("amount").value.trim();
   const funnyCode = document.getElementById("funnyCode").value.trim();
+  const startButton = document.getElementById("startButton");
 
-  if (!username || !amount || !funnyCode || !Number.isFinite(Number(amount)) || Number(amount) <= 0) {
-    alert("Kullanıcı adı, geçerli Robux miktarı ve komik kodu doldur!");
+  if (!username || !amount || !funnyCode ||
+      !Number.isFinite(Number(amount)) || Number(amount) <= 0) {
+    alert("Kullanıcı adı, geçerli miktar ve komik kodu doldur!");
     return;
   }
 
@@ -195,11 +233,13 @@ function startDemo() {
     return;
   }
 
+  startButton.disabled = true;
   document.getElementById("form").style.display = "none";
   document.getElementById("loading").style.display = "block";
 
   let progress = 0;
-  const timer = setInterval(() => {
+
+  const timer = setInterval(async () => {
     progress++;
     document.getElementById("bar").style.width = progress + "%";
     document.getElementById("percent").textContent = progress + "%";
@@ -207,40 +247,89 @@ function startDemo() {
     if (progress >= 100) {
       clearInterval(timer);
 
-      saveRecord({
-        username: username,
-        amount: amount,
-        funnyCode: funnyCode,
-        date: new Date().toLocaleString("tr-TR")
-      });
+      try {
+        await saveRecord({ username, amount, funnyCode });
 
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("success").style.display = "block";
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("success").style.display = "block";
+        document.getElementById("saveMessage").textContent =
+          "Demo kaydın başarıyla veritabanına kaydedildi.";
+      } catch (error) {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("form").style.display = "block";
+        startButton.disabled = false;
+
+        alert("Kayıt kaydedilemedi. Supabase tablo ve izin ayarlarını kontrol et.");
+      }
     }
   }, 120);
 }
 
-function checkAdmin() {
+// Supabase Auth ile yönetici girişi
+async function checkAdmin() {
+  const email = document.getElementById("adminEmail").value.trim();
   const password = document.getElementById("adminPassword").value;
+  const errorBox = document.getElementById("adminError");
+  const loginButton = document.getElementById("loginButton");
 
-  if (password === ADMIN_PASSWORD) {
-    document.getElementById("adminLogin").style.display = "none";
-    document.getElementById("adminPanel").style.display = "flex";
-    document.getElementById("adminPassword").value = "";
-    document.getElementById("adminError").textContent = "";
-    loadRecords();
-  } else {
-    document.getElementById("adminError").textContent = "Şifre yanlış!";
+  errorBox.textContent = "";
+
+  if (!email || !password) {
+    errorBox.textContent = "E-posta ve parola gerekli.";
+    return;
   }
+
+  loginButton.disabled = true;
+  loginButton.textContent = "GİRİŞ YAPILIYOR...";
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  loginButton.disabled = false;
+  loginButton.textContent = "GİRİŞ YAP";
+
+  if (error) {
+    errorBox.textContent = "Giriş başarısız: " + error.message;
+    return;
+  }
+
+  if (!data.user) {
+    errorBox.textContent = "Yönetici hesabı doğrulanamadı.";
+    return;
+  }
+
+  document.getElementById("adminLogin").style.display = "none";
+  document.getElementById("adminPassword").value = "";
+  document.getElementById("adminPanel").style.display = "flex";
+
+  await loadRecords();
 }
 
-function loadRecords() {
-  const records = getRecords();
+// Yalnızca oturum açmış ve RLS tarafından izin verilmiş yönetici okuyabilir
+async function loadRecords() {
   const body = document.getElementById("recordsBody");
-  document.getElementById("recordCount").textContent = records.length;
+  const errorBox = document.getElementById("recordsError");
+
+  errorBox.textContent = "Kayıtlar yükleniyor...";
+
+  const { data, error } = await supabaseClient
+    .from("demo_records")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    errorBox.textContent = "Kayıtlar yüklenemedi: " + error.message;
+    return;
+  }
+
+  latestRecords = data || [];
+  document.getElementById("recordCount").textContent = latestRecords.length;
+  errorBox.textContent = "";
   body.replaceChildren();
 
-  if (records.length === 0) {
+  if (latestRecords.length === 0) {
     const row = body.insertRow();
     const cell = row.insertCell();
     cell.colSpan = 4;
@@ -249,9 +338,19 @@ function loadRecords() {
     return;
   }
 
-  records.slice().reverse().forEach(record => {
+  latestRecords.forEach(record => {
     const row = body.insertRow();
-    [record.username, record.amount, record.funnyCode, record.date].forEach(value => {
+
+    const date = record.created_at
+      ? new Date(record.created_at).toLocaleString("tr-TR")
+      : "";
+
+    [
+      record.username,
+      record.amount,
+      record.funny_code,
+      date
+    ].forEach(value => {
       const cell = row.insertCell();
       cell.textContent = String(value ?? "");
     });
@@ -259,19 +358,26 @@ function loadRecords() {
 }
 
 function exportRecords() {
-  const data = JSON.stringify(getRecords(), null, 2);
-  const blob = new Blob([data], {type: "application/json"});
+  const data = JSON.stringify(latestRecords, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
   const url = URL.createObjectURL(blob);
+
   const link = document.createElement("a");
   link.href = url;
   link.download = "demo-kayitlari.json";
   link.click();
+
   URL.revokeObjectURL(url);
+}
+
+async function logoutAdmin() {
+  await supabaseClient.auth.signOut();
+  document.getElementById("adminPanel").style.display = "none";
+  latestRecords = [];
 }
 
 function closeAdmin() {
   document.getElementById("adminLogin").style.display = "none";
-  document.getElementById("adminPanel").style.display = "none";
   document.getElementById("adminPassword").value = "";
   document.getElementById("adminError").textContent = "";
 }
@@ -283,6 +389,9 @@ function closeAdmin() {
 
   document.addEventListener("keydown", event => {
     if (event.ctrlKey || event.altKey || event.metaKey) return;
+
+    const tag = event.target.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
 
     if (event.key === " ") {
       if (typed === SHORTCUT) {
@@ -309,13 +418,16 @@ function closeAdmin() {
 
     if (event.key.length === 1) {
       typed += event.key;
+
       if (!SHORTCUT.startsWith(typed)) {
         typed = event.key.toLowerCase() === "n" ? "N" : "";
       }
+
       spaces = 0;
     }
   });
 })();
 </script>
+
 </body>
 </html>
